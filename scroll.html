@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country & Couriers Display</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .section-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .section-container {
+                flex-direction: row;
+            }
+        }
+
+        .countries-section {
+            flex: 1;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .countries-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .countries-scroll-container {
+            position: relative;
+        }
+
+        .countries-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 15px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .countries-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .country-item {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 80px;
+        }
+
+        .country-flag {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .country-name {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .couriers-section {
+            flex: 1;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .couriers-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .couriers-scroll-container {
+            position: relative;
+        }
+
+        .couriers-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 15px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .couriers-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .courier-item {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 80px;
+        }
+
+        .courier-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .courier-name {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            display: none;
+            z-index: 1;
+            font-weight: bold;
+        }
+
+        .scroll-button.left {
+            left: 10px;
+        }
+
+        .scroll-button.right {
+            right: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .scroll-button {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section-container">
+        <!-- Countries Section -->
+        <div class="countries-section">
+            <div class="countries-title">Available Countries</div>
+            <div class="countries-scroll-container">
+                <button class="scroll-button left">&lt;</button>
+                <div class="countries-scroll">
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/us.png" alt="USA" class="country-flag">
+                        <span class="country-name">USA</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="country-flag">
+                        <span class="country-name">UK</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/ca.png" alt="Canada" class="country-flag">
+                        <span class="country-name">Canada</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/au.png" alt="Australia" class="country-flag">
+                        <span class="country-name">Australia</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/de.png" alt="Germany" class="country-flag">
+                        <span class="country-name">Germany</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/fr.png" alt="France" class="country-flag">
+                        <span class="country-name">France</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/jp.png" alt="Japan" class="country-flag">
+                        <span class="country-name">Japan</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/cn.png" alt="China" class="country-flag">
+                        <span class="country-name">China</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/in.png" alt="India" class="country-flag">
+                        <span class="country-name">India</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/br.png" alt="Brazil" class="country-flag">
+                        <span class="country-name">Brazil</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/mx.png" alt="Mexico" class="country-flag">
+                        <span class="country-name">Mexico</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/it.png" alt="Italy" class="country-flag">
+                        <span class="country-name">Italy</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/es.png" alt="Spain" class="country-flag">
+                        <span class="country-name">Spain</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/ru.png" alt="Russia" class="country-flag">
+                        <span class="country-name">Russia</span>
+                    </div>
+                    <div class="country-item">
+                        <img src="https://flagcdn.com/w40/kr.png" alt="South Korea" class="country-flag">
+                        <span class="country-name">S. Korea</span>
+                    </div>
+                </div>
+                <button class="scroll-button right">&gt;</button>
+            </div>
+        </div>
+
+        <!-- Couriers Section -->
+        <div class="couriers-section">
+            <div class="couriers-title">Courier Platforms</div>
+            <div class="couriers-scroll-container">
+                <button class="scroll-button left">&lt;</button>
+                <div class="couriers-scroll">
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/fedex.com" alt="FedEx" class="courier-logo">
+                        <span class="courier-name">FedEx</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/ups.com" alt="UPS" class="courier-logo">
+                        <span class="courier-name">UPS</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/dhl.com" alt="DHL" class="courier-logo">
+                        <span class="courier-name">DHL</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/usps.com" alt="USPS" class="courier-logo">
+                        <span class="courier-name">USPS</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" class="courier-logo">
+                        <span class="courier-name">Amazon</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/ontrac.com" alt="OnTrac" class="courier-logo">
+                        <span class="courier-name">OnTrac</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/lasership.com" alt="LaserShip" class="courier-logo">
+                        <span class="courier-name">LaserShip</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/canadapost.ca" alt="Canada Post" class="courier-logo">
+                        <span class="courier-name">Canada Post</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/royalmail.com" alt="Royal Mail" class="courier-logo">
+                        <span class="courier-name">Royal Mail</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/auspost.com.au" alt="Australia Post" class="courier-logo">
+                        <span class="courier-name">Aus Post</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/postnl.nl" alt="PostNL" class="courier-logo">
+                        <span class="courier-name">PostNL</span>
+                    </div>
+                    <div class="courier-item">
+                        <img src="https://logo.clearbit.com/dpd.com" alt="DPD" class="courier-logo">
+                        <span class="courier-name">DPD</span>
+                    </div>
+                </div>
+                <button class="scroll-button right">&gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize both scroll containers
+            const couriersScroll = document.querySelector('.couriers-scroll');
+            const countriesScroll = document.querySelector('.countries-scroll');
+            
+            // Initialize both sets of buttons
+            const couriersLeftBtn = document.querySelector('.couriers-scroll-container .left');
+            const couriersRightBtn = document.querySelector('.couriers-scroll-container .right');
+            const countriesLeftBtn = document.querySelector('.countries-scroll-container .left');
+            const countriesRightBtn = document.querySelector('.countries-scroll-container .right');
+            
+            // Function to setup auto-scroll for a container
+            function setupAutoScroll(container, leftBtn, rightBtn) {
+                // Clone items for seamless looping
+                const items = container.querySelectorAll('.courier-item, .country-item');
+                items.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    container.appendChild(clone);
+                });
+                
+                // Auto-scroll variables
+                let autoScrollInterval;
+                const scrollSpeed = 1;
+                const scrollInterval = 30;
+                
+                // Start auto-scrolling
+                function startAutoScroll() {
+                    autoScrollInterval = setInterval(() => {
+                        container.scrollLeft += scrollSpeed;
+                        
+                        // Check if we've reached the end of the cloned items
+                        if (container.scrollLeft >= (container.scrollWidth / 2)) {
+                            // Smoothly reset to the beginning
+                            container.scrollTo({
+                                left: 0,
+                                behavior: 'instant'
+                            });
+                        }
+                    }, scrollInterval);
+                    return autoScrollInterval;
+                }
+                
+                // Start auto-scroll initially
+                let scrollIntervalId = startAutoScroll();
+                
+                // Pause auto-scrolling on hover
+                container.addEventListener('mouseenter', () => {
+                    clearInterval(scrollIntervalId);
+                });
+                
+                // Resume auto-scrolling when mouse leaves
+                container.addEventListener('mouseleave', () => {
+                    scrollIntervalId = startAutoScroll();
+                });
+                
+                // Manual scroll buttons functionality
+                leftBtn.addEventListener('click', () => {
+                    container.scrollBy({
+                        left: -200,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                rightBtn.addEventListener('click', () => {
+                    container.scrollBy({
+                        left: 200,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                // Hide/show scroll buttons based on scroll position
+                container.addEventListener('scroll', () => {
+                    const maxScroll = container.scrollWidth / 2;
+                    
+                    if (container.scrollLeft <= 10) {
+                        leftBtn.style.opacity = '0.5';
+                        leftBtn.style.cursor = 'default';
+                    } else {
+                        leftBtn.style.opacity = '1';
+                        leftBtn.style.cursor = 'pointer';
+                    }
+                    
+                    if (container.scrollLeft >= maxScroll - 10) {
+                        rightBtn.style.opacity = '0.5';
+                        rightBtn.style.cursor = 'default';
+                    } else {
+                        rightBtn.style.opacity = '1';
+                        rightBtn.style.cursor = 'pointer';
+                    }
+                });
+                
+                // Touch support for mobile
+                let isDown = false;
+                let startX;
+                let scrollright;
+                
+                container.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    startX = e.pageX - container.offsetLeft;
+                    scrollLeft = container.scrollLeft;
+                    clearInterval(scrollIntervalId);
+                });
+                
+                container.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    scrollIntervalId = startAutoScroll();
+                });
+                
+                container.addEventListener('mouseup', () => {
+                    isDown = false;
+                    scrollIntervalId = startAutoScroll();
+                });
+                
+                container.addEventListener('mousemove', (e) => {
+                    if(!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - container.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    container.scrollLeft = scrollLeft - walk;
+                });
+                
+                // Trigger initial check
+                container.dispatchEvent(new Event('scroll'));
+            }
+            
+            // Setup containers with same direction
+            setupAutoScroll(couriersScroll, couriersLeftBtn, couriersRightBtn);
+            setupAutoScroll(countriesScroll, countriesLeftBtn, countriesLeftBtn);
+        });
+    </script>
+</body>
+</html>
