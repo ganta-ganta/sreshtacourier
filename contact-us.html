@@ -6,9 +6,7 @@
     <title>Contact Us - SRESHTA INTERNATIONAL COURIERS AND LOGISTICS</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
     <style>
-        /* Same CSS as in your tracking page */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #1a252f;
@@ -23,19 +21,241 @@
             --border-color: #ddd;
             --sidebar-width: 300px;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6; 
             color: var(--text-color); 
             background-color: #f5f5f5;
             position: relative;
-            padding-right: var(--sidebar-width);
             transition: all 0.3s ease;
+            overflow-x: hidden;
         }
         
-        /* Same header, sidebar, footer styles as in your tracking page */
-        /* ... (copy all the CSS from your tracking page) ... */
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background-color: var(--secondary-color);
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .sidebar.active {
+            right: 0;
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header img {
+            max-width: 180px;
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-header h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+        
+        .sidebar-menu li {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .sidebar-menu li a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-menu li a:hover {
+            background-color: rgba(255,255,255,0.1);
+            padding-left: 25px;
+        }
+        
+        .sidebar-menu li a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .sidebar-contact {
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-contact h3 i {
+            margin-right: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .contact-item a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Sidebar Toggle */
+        .sidebar-toggle {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        .sidebar-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
         
         /* Contact specific styles */
         .contact-header {
@@ -48,6 +268,13 @@
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-header h1 i {
+            margin-right: 15px;
         }
         
         .contact-header p {
@@ -59,14 +286,20 @@
         
         .contact-section {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 30px;
             margin-bottom: 40px;
         }
         
+        @media (min-width: 992px) {
+            .contact-section {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
         .contact-form {
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -76,6 +309,7 @@
             margin-bottom: 25px;
             display: flex;
             align-items: center;
+            font-size: 1.5rem;
         }
         
         .contact-form h2 i {
@@ -102,6 +336,7 @@
             border-radius: 4px;
             font-size: 16px;
             transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
         }
         
         .form-group input:focus,
@@ -130,6 +365,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             width: 100%;
+            font-family: 'Poppins', sans-serif;
         }
         
         .submit-btn:hover {
@@ -138,9 +374,16 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
         .contact-info {
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -150,6 +393,7 @@
             margin-bottom: 25px;
             display: flex;
             align-items: center;
+            font-size: 1.5rem;
         }
         
         .contact-info h2 i {
@@ -179,6 +423,7 @@
         .info-content h3 {
             color: var(--primary-color);
             margin-bottom: 5px;
+            font-size: 1.1rem;
         }
         
         .info-content p,
@@ -186,6 +431,7 @@
             color: var(--text-light);
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
         
         .info-content a:hover {
@@ -200,9 +446,15 @@
             margin-bottom: 40px;
         }
         
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
         .branches-section {
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 40px;
@@ -212,18 +464,33 @@
             color: var(--primary-color);
             margin-bottom: 25px;
             text-align: center;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .branches-section h2 i {
+            margin-right: 15px;
         }
         
         .branches-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .branches-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+            }
         }
         
         .branch-card {
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 25px;
+            padding: 20px;
             transition: all 0.3s;
         }
         
@@ -238,6 +505,7 @@
             margin-bottom: 15px;
             display: flex;
             align-items: center;
+            font-size: 1.2rem;
         }
         
         .branch-card h3 i {
@@ -248,6 +516,7 @@
         .branch-card p {
             margin-bottom: 10px;
             color: var(--text-light);
+            font-size: 0.95rem;
         }
         
         .branch-card .branch-contact {
@@ -256,15 +525,30 @@
             border-top: 1px dashed var(--border-color);
         }
         
+        .branch-card .branch-contact p {
+            display: flex;
+            align-items: center;
+        }
+        
+        .branch-card .branch-contact i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+        
         .branch-card .branch-contact a {
             color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .branch-card .branch-contact a:hover {
+            text-decoration: underline;
         }
         
         .faq-section {
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 40px;
@@ -274,6 +558,14 @@
             color: var(--primary-color);
             margin-bottom: 25px;
             text-align: center;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .faq-section h2 i {
+            margin-right: 15px;
         }
         
         .accordion-item {
@@ -320,6 +612,145 @@
         
         .accordion-content-inner {
             padding: 20px 0;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+        
+        .accordion-content-inner a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .accordion-content-inner a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0 0;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        .footer-section {
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-section h3 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0.8;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            background-color: var(--primary-color);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Form Status Messages */
+        .form-status {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .form-status.success {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+            display: block;
+        }
+        
+        .form-status.error {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger-color);
+            border: 1px solid var(--danger-color);
+            display: block;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -336,7 +767,7 @@
             <li><a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
             <li><a href="our-services.html"><i class="fas fa-shipping-fast"></i> Our Services</a></li>
             <li><a href="coverage-areas.html"><i class="fas fa-map-marked-alt"></i> Coverage Areas</a></li>
-            <li><a href="contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="contact-us.html" class="active"><i class="fas fa-envelope"></i> Contact Us</a></li>
             <li><a href="contact-us.html#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
         </ul>
         
@@ -403,25 +834,26 @@
         <section class="contact-section">
             <div class="contact-form">
                 <h2><i class="fas fa-paper-plane"></i> Send Us a Message</h2>
+                <div id="formStatus" class="form-status"></div>
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" name="name" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" name="email" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone">
+                        <input type="tel" id="phone" name="phone">
                     </div>
                     
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <select id="subject" required>
+                        <select id="subject" name="subject" required>
                             <option value="">Select a subject</option>
                             <option>General Inquiry</option>
                             <option>Tracking Assistance</option>
@@ -433,10 +865,13 @@
                     
                     <div class="form-group">
                         <label for="message">Your Message</label>
-                        <textarea id="message" required></textarea>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="submitText">Send Message</span>
+                        <span id="submitSpinner" class="spinner" style="display: none;"></span>
+                    </button>
                 </form>
             </div>
             
@@ -494,7 +929,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.441060241844!2d80.44186931487659!3d16.450077988640676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b7e84ab4d4b1e!2sArundelpet%2C%20Guntur%2C%20Andhra%20Pradesh%20522002!5e0!3m2!1sen!2sin!4v1624965787606!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
         
-        <section class="branches-section">
+        <section class="branches-section" id="branches">
             <h2><i class="fas fa-store"></i> Our Branch Offices</h2>
             
             <div class="branches-grid">
@@ -527,7 +962,7 @@
             </div>
         </section>
         
-        <section class="faq-section">
+        <section class="faq-section" id="faq">
             <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
             
             <div class="accordion">
@@ -595,59 +1030,56 @@
     </main>
     
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3><i class="fas fa-shipping-fast"></i> SRESHTA International Couriers</h3>
-                    <p>Your trusted partner for fast and reliable logistics solutions across India and internationally.</p>
-                </div>
-                <div class="footer-section">
-                    <h3><i class="fas fa-map-marker-alt"></i> Contact Us</h3>
-                    <p>
-                        <i class="fas fa-envelope"></i> 
-                        <a href="mailto:srasthainternationalcouriers@gmail.com" style="color: inherit; text-decoration: none;">
-                            srasthainternationalcouriers@gmail.com
-                        </a>
-                    </p>
-                    <p>
-                        <i class="fas fa-phone-alt"></i> 
-                        <a href="tel:+919493924742" style="color: inherit; text-decoration: none;">
-                            +91 94939 24742
-                        </a>
-                    </p>
-                    <p>
-                        <i class="fas fa-building"></i> 
-                        <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" 
-                           target="_blank" 
-                           style="color: inherit; text-decoration: none;">
-                            7/4, Sali Pet, Arundelpet, Guntur, Andhra Pradesh 522002
-                        </a>
-                    </p>
-                </div>
-                <div class="footer-section">
-                    <h3><i class="fas fa-clock"></i> Business Hours</h3>
-                    <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
-                    <p>Saturday: 9:00 AM - 2:00 PM</p>
-                    <p>Sunday: Closed</p>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-shipping-fast"></i> SRESHTA International Couriers</h3>
+                <p>Your trusted partner for fast and reliable logistics solutions across India and internationally.</p>
             </div>
-            <div class="footer-bottom">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                    <p>&copy; 2025 SRESHTA International Couriers and Logistics. All rights reserved.</p>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span>Powered by</span>
-                        <a href="https://gantasolutions.com" target="_blank" style="display: inline-block;">
-                            <img src="https://gantasolutions.com/gantasolutions.png" 
-                                 alt="Ganta Solutions Logo" 
-                                 style="height: 30px; width: auto; vertical-align: middle;">
-                        </a>
-                        <span style="color: #aaa;">|</span>
-                        <a href="https://gantasolutions.com" 
-                           target="_blank" 
-                           style="color: #777; text-decoration: none;">
-                            <i class="fas fa-code"></i> Development Team
-                        </a>
-                    </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Contact Us</h3>
+                <p>
+                    <i class="fas fa-envelope"></i> 
+                    <a href="mailto:srasthainternationalcouriers@gmail.com">
+                        srasthainternationalcouriers@gmail.com
+                    </a>
+                </p>
+                <p>
+                    <i class="fas fa-phone-alt"></i> 
+                    <a href="tel:+919493924742">
+                        +91 94939 24742
+                    </a>
+                </p>
+                <p>
+                    <i class="fas fa-building"></i> 
+                    <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" 
+                       target="_blank">
+                        7/4, Sali Pet, Arundelpet, Guntur, Andhra Pradesh 522002
+                    </a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                <p>Saturday: 9:00 AM - 2:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <p>&copy; 2025 SRESHTA International Couriers and Logistics. All rights reserved.</p>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span>Powered by</span>
+                    <a href="https://gantasolutions.com" target="_blank" style="display: inline-block;">
+                        <img src="https://gantasolutions.com/gantasolutions.png" 
+                             alt="Ganta Solutions Logo" 
+                             style="height: 30px; width: auto; vertical-align: middle;">
+                    </a>
+                    <span style="color: #aaa;">|</span>
+                    <a href="https://gantasolutions.com" 
+                       target="_blank" 
+                       style="color: #777; text-decoration: none;">
+                        <i class="fas fa-code"></i> Development Team
+                    </a>
                 </div>
             </div>
         </div>
@@ -661,6 +1093,17 @@
             
             sidebarToggle.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
+                this.querySelector('i').classList.toggle('fa-bars');
+                this.querySelector('i').classList.toggle('fa-times');
+            });
+            
+            // Close sidebar when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!sidebar.contains(e.target) && e.target !== sidebarToggle && !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.remove('active');
+                    sidebarToggle.querySelector('i').classList.add('fa-bars');
+                    sidebarToggle.querySelector('i').classList.remove('fa-times');
+                }
             });
             
             // Accordion functionality
@@ -674,18 +1117,119 @@
                     } else {
                         content.style.maxHeight = content.scrollHeight + "px";
                     }
+                    
+                    // Close other accordion items when opening one
+                    if (this.classList.contains('active')) {
+                        accordionHeaders.forEach(otherHeader => {
+                            if (otherHeader !== this && otherHeader.classList.contains('active')) {
+                                otherHeader.classList.remove('active');
+                                otherHeader.nextElementSibling.style.maxHeight = null;
+                            }
+                        });
+                    }
                 });
             });
             
-            // Form submission
+            // Form submission with AJAX
             const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const submitSpinner = document.getElementById('submitSpinner');
+            const formStatus = document.getElementById('formStatus');
+            
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    alert('Thank you for your message! We will get back to you soon.');
-                    this.reset();
+                    
+                    // Show loading state
+                    submitBtn.disabled = true;
+                    submitText.textContent = 'Sending...';
+                    submitSpinner.style.display = 'inline-block';
+                    formStatus.style.display = 'none';
+                    
+                    // Simulate form submission (replace with actual AJAX call)
+                    setTimeout(() => {
+                        // This would be replaced with actual form submission code
+                        // For example:
+                        // fetch('submit-form.php', {
+                        //     method: 'POST',
+                        //     body: new FormData(contactForm)
+                        // })
+                        // .then(response => response.json())
+                        // .then(data => {
+                        //     // Handle response
+                        // })
+                        // .catch(error => {
+                        //     // Handle error
+                        // });
+                        
+                        // For demo purposes, we'll just show a success message
+                        formStatus.className = 'form-status success';
+                        formStatus.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your message! We will get back to you soon.';
+                        formStatus.style.display = 'block';
+                        
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Reset button state
+                        submitBtn.disabled = false;
+                        submitText.textContent = 'Send Message';
+                        submitSpinner.style.display = 'none';
+                        
+                        // Scroll to status message
+                        formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        
+                    }, 1500);
                 });
             }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close mobile sidebar if open
+                        if (sidebar.classList.contains('active')) {
+                            sidebar.classList.remove('active');
+                            sidebarToggle.querySelector('i').classList.add('fa-bars');
+                            sidebarToggle.querySelector('i').classList.remove('fa-times');
+                        }
+                    }
+                });
+            });
+            
+            // Highlight active section in sidebar
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 100)) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.sidebar-menu li a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}` || 
+                        (currentSection === '' && link.getAttribute('href') === 'index.html')) {
+                        link.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
