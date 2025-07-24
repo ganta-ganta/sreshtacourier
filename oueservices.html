@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - SRESHTA INTERNATIONAL COURIERS AND LOGISTICS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Same CSS as in your tracking page */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #1a252f;
+            --accent-color: #ff6600;
+            --success-color: #27ae60;        
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --border-color: #ddd;
+            --sidebar-width: 300px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6; 
+            color: var(--text-color); 
+            background-color: #f5f5f5;
+            position: relative;
+            padding-right: var(--sidebar-width);
+            transition: all 0.3s ease;
+        }
+        
+        /* Same header, sidebar, footer styles as in your tracking page */
+        /* ... (copy all the CSS from your tracking page) ... */
+        
+        /* Services specific styles */
+        .services-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .services-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .services-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-content h2 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .service-content ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .service-content ul li {
+            margin-bottom: 8px;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .features-section {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .feature-card:hover h3,
+        .feature-card:hover p {
+            color: white;
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+        }
+        
+        .process-section {
+            margin-bottom: 40px;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 40px;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--border-color);
+            z-index: 1;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 20%;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step-title {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Right Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="img/logo-white.png" alt="SRESHTA International Logo">
+            <h3>Quick Links</h3>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="our-services.html" class="active"><i class="fas fa-shipping-fast"></i> Our Services</a></li>
+            <li><a href="coverage-areas.html"><i class="fas fa-map-marked-alt"></i> Coverage Areas</a></li>
+            <li><a href="contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+        </ul>
+        
+        <div class="sidebar-contact">
+            <h3><i class="fas fa-headset"></i> Contact Details</h3>
+            
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+919493924742">+91 94939 24742</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:srasthainternationalcouriers@gmail.com">srasthainternationalcouriers@gmail.com</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <a href="https://wa.me/919493924742" target="_blank">WhatsApp Chat</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" target="_blank">Our Location</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Mobile Sidebar Toggle -->
+    <div class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919493924742" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="img/logo.png" alt="SRESHTA International Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>SRESHTA INTERNATIONAL COURIERS</h1>
+                    <p>Fast, Reliable & Secure Logistics Solutions</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="services-header">
+            <h1><i class="fas fa-shipping-fast"></i> Our Comprehensive Services</h1>
+            <p>We offer a complete range of logistics solutions tailored to meet your domestic and international shipping needs with reliability and efficiency.</p>
+        </section>
+        
+        <section class="services-grid">
+            <div class="service-card">
+                <img src="img/domestic-shipping.jpg" alt="Domestic Shipping">
+                <div class="service-content">
+                    <span class="service-tag">Domestic</span>
+                    <h2><i class="fas fa-truck"></i> Domestic Courier Services</h2>
+                    <p>Fast and reliable delivery services across India with real-time tracking and multiple delivery options.</p>
+                    <ul>
+                        <li>Same-day and next-day delivery options</li>
+                        <li>Express and economy services</li>
+                        <li>Cash on delivery available</li>
+                        <li>Secure handling of sensitive documents</li>
+                        <li>Dedicated account management</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="img/international-shipping.jpg" alt="International Shipping">
+                <div class="service-content">
+                    <span class="service-tag">International</span>
+                    <h2><i class="fas fa-globe"></i> International Shipping</h2>
+                    <p>Seamless cross-border logistics solutions with customs clearance and end-to-end tracking.</p>
+                    <ul>
+                        <li>Air and sea freight options</li>
+                        <li>Door-to-door international delivery</li>
+                        <li>Customs documentation assistance</li>
+                        <li>Competitive international rates</li>
+                        <li>Dedicated international support</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="img/ecommerce-fulfillment.jpg" alt="E-commerce Fulfillment">
+                <div class="service-content">
+                    <span class="service-tag">E-commerce</span>
+                    <h2><i class="fas fa-shopping-cart"></i> E-commerce Solutions</h2>
+                    <p>Customized logistics solutions for online sellers with integrated order management.</p>
+                    <ul>
+                        <li>Bulk shipping discounts</li>
+                        <li>Automated order processing</li>
+                        <li>Returns management</li>
+                        <li>Inventory storage options</li>
+                        <li>API integration available</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="img/cargo-services.jpg" alt="Cargo Services">
+                <div class="service-content">
+                    <span class="service-tag">Commercial</span>
+                    <h2><i class="fas fa-pallet"></i> Cargo & Freight Services</h2>
+                    <p>Comprehensive cargo solutions for businesses of all sizes with flexible options.</p>
+                    <ul>
+                        <li>Full truckload (FTL) and less-than-truckload (LTL)</li>
+                        <li>Heavy and oversized cargo handling</li>
+                        <li>Temperature-controlled transport</li>
+                        <li>Warehousing and distribution</li>
+                        <li>Dedicated fleet services</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="img/document-courier.jpg" alt="Document Courier">
+                <div class="service-content">
+                    <span class="service-tag">Priority</span>
+                    <h2><i class="fas fa-envelope"></i> Document Courier</h2>
+                    <p>Secure and timely delivery of important documents with proof of delivery.</p>
+                    <ul>
+                        <li>Confidential document handling</li>
+                        <li>Same-day document delivery</li>
+                        <li>Legal and court document services</li>
+                        <li>Notarized delivery options</li>
+                        <li>24/7 document tracking</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="img/special-services.jpg" alt="Special Services">
+                <div class="service-content">
+                    <span class="service-tag">Specialized</span>
+                    <h2><i class="fas fa-star"></i> Special Services</h2>
+                    <p>Custom solutions for unique shipping requirements with personalized care.</p>
+                    <ul>
+                        <li>Medical equipment and supplies</li>
+                        <li>Art and fragile items transport</li>
+                        <li>Event and exhibition logistics</li>
+                        <li>High-value item insurance</li>
+                        <li>White-glove delivery services</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features-section">
+            <h1 style="text-align: center; margin-bottom: 30px;"><i class="fas fa-medal"></i> Why Choose Our Services</h1>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Handling</h3>
+                    <p>Your shipments are handled with utmost care and security throughout the journey.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>On-Time Delivery</h3>
+                    <p>98% on-time delivery rate with real-time tracking and updates.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-rupee-sign"></i>
+                    <h3>Competitive Pricing</h3>
+                    <p>Affordable rates without compromising on service quality.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated customer support available round the clock.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Wide Coverage</h3>
+                    <p>Extensive network covering 500+ cities across India and internationally.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Processing</h3>
+                    <p>Quick pickup and processing with same-day dispatch options.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="process-section">
+            <h1 style="text-align: center; margin-bottom: 30px;"><i class="fas fa-project-diagram"></i> Our Simple Shipping Process</h1>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Schedule Pickup</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Package Handover</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">In-Transit</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Out for Delivery</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Successful Delivery</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-shipping-fast"></i> SRESHTA International Couriers</h3>
+                    <p>Your trusted partner for fast and reliable logistics solutions across India and internationally.</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Contact Us</h3>
+                    <p>
+                        <i class="fas fa-envelope"></i> 
+                        <a href="mailto:srasthainternationalcouriers@gmail.com" style="color: inherit; text-decoration: none;">
+                            srasthainternationalcouriers@gmail.com
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone-alt"></i> 
+                        <a href="tel:+919493924742" style="color: inherit; text-decoration: none;">
+                            +91 94939 24742
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fas fa-building"></i> 
+                        <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" 
+                           target="_blank" 
+                           style="color: inherit; text-decoration: none;">
+                            7/4, Sali Pet, Arundelpet, Guntur, Andhra Pradesh 522002
+                        </a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                    <p>Saturday: 9:00 AM - 2:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <p>&copy; 2025 SRESHTA International Couriers and Logistics. All rights reserved.</p>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span>Powered by</span>
+                        <a href="https://gantasolutions.com" target="_blank" style="display: inline-block;">
+                            <img src="https://gantasolutions.com/gantasolutions.png" 
+                                 alt="Ganta Solutions Logo" 
+                                 style="height: 30px; width: auto; vertical-align: middle;">
+                        </a>
+                        <span style="color: #aaa;">|</span>
+                        <a href="https://gantasolutions.com" 
+                           target="_blank" 
+                           style="color: #777; text-decoration: none;">
+                            <i class="fas fa-code"></i> Development Team
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Sidebar toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.querySelector('.sidebar');
+            
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
