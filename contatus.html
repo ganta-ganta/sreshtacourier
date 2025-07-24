@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SRESHTA INTERNATIONAL COURIERS AND LOGISTICS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Same CSS as in your tracking page */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #1a252f;
+            --accent-color: #ff6600;
+            --success-color: #27ae60;        
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --border-color: #ddd;
+            --sidebar-width: 300px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6; 
+            color: var(--text-color); 
+            background-color: #f5f5f5;
+            position: relative;
+            padding-right: var(--sidebar-width);
+            transition: all 0.3s ease;
+        }
+        
+        /* Same header, sidebar, footer styles as in your tracking page */
+        /* ... (copy all the CSS from your tracking page) ... */
+        
+        /* Contact specific styles */
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .contact-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .contact-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .contact-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-form h2 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e55c00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info h2 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 25px;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 102, 0, 0.1);
+            color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .info-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .info-content p,
+        .info-content a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .info-content a:hover {
+            color: var(--accent-color);
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .branches-section {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .branches-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .branch-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+        
+        .branch-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .branch-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .branch-card h3 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .branch-card p {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        .branch-card .branch-contact {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-color);
+        }
+        
+        .branch-card .branch-contact a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .faq-section {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .faq-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .accordion-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .accordion-header {
+            background-color: #f9f9f9;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .accordion-header:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .accordion-header i {
+            transition: transform 0.3s;
+        }
+        
+        .accordion-header.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .accordion-header.active i {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .accordion-content-inner {
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Right Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="img/logo-white.png" alt="SRESHTA International Logo">
+            <h3>Quick Links</h3>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="our-services.html"><i class="fas fa-shipping-fast"></i> Our Services</a></li>
+            <li><a href="coverage-areas.html"><i class="fas fa-map-marked-alt"></i> Coverage Areas</a></li>
+            <li><a href="contact-us.html" class="active"><i class="fas fa-envelope"></i> Contact Us</a></li>
+        </ul>
+        
+        <div class="sidebar-contact">
+            <h3><i class="fas fa-headset"></i> Contact Details</h3>
+            
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+919493924742">+91 94939 24742</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:srasthainternationalcouriers@gmail.com">srasthainternationalcouriers@gmail.com</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <a href="https://wa.me/919493924742" target="_blank">WhatsApp Chat</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" target="_blank">Our Location</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Mobile Sidebar Toggle -->
+    <div class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919493924742" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="img/logo.png" alt="SRESHTA International Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>SRESHTA INTERNATIONAL COURIERS</h1>
+                    <p>Fast, Reliable & Secure Logistics Solutions</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="contact-header">
+            <h1><i class="fas fa-envelope"></i> Contact Us</h1>
+            <p>We're here to help with all your shipping needs. Reach out to our team for any inquiries or support.</p>
+        </section>
+        
+        <section class="contact-section">
+            <div class="contact-form">
+                <h2><i class="fas fa-paper-plane"></i> Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" required>
+                            <option value="">Select a subject</option>
+                            <option>General Inquiry</option>
+                            <option>Tracking Assistance</option>
+                            <option>Service Complaint</option>
+                            <option>Business Partnership</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+            
+            <div class="contact-info">
+                <h2><i class="fas fa-info-circle"></i> Contact Information</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Head Office</h3>
+                        <p>7/4, Sali Pet, Arundelpet, Guntur, Andhra Pradesh 522002</p>
+                        <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" target="_blank">View on Map</a>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Phone Numbers</h3>
+                        <p><a href="tel:+919493924742">+91 94939 24742</a></p>
+                        <p><a href="tel:+914086522222">+91 40 8652 2222</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email Addresses</h3>
+                        <p><a href="mailto:srasthainternationalcouriers@gmail.com">srasthainternationalcouriers@gmail.com</a></p>
+                        <p><a href="mailto:support@sreshtacouriers.com">support@sreshtacouriers.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                        <p>Saturday: 9:00 AM - 2:00 PM</p>
+                        <p>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.441060241844!2d80.44186931487659!3d16.450077988640676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b7e84ab4d4b1e!2sArundelpet%2C%20Guntur%2C%20Andhra%20Pradesh%20522002!5e0!3m2!1sen!2sin!4v1624965787606!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        
+        <section class="branches-section">
+            <h2><i class="fas fa-store"></i> Our Branch Offices</h2>
+            
+            <div class="branches-grid">
+                <div class="branch-card">
+                    <h3><i class="fas fa-city"></i> Guntur Head Office</h3>
+                    <p>Our main operational hub with full customer service and logistics operations.</p>
+                    <div class="branch-contact">
+                        <p><i class="fas fa-phone-alt"></i> <a href="tel:+919493924742">+91 94939 24742</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:guntur@sreshtacouriers.com">guntur@sreshtacouriers.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="branch-card">
+                    <h3><i class="fas fa-city"></i> Hyderabad Branch</h3>
+                    <p>Full-service location with international shipping specialists.</p>
+                    <div class="branch-contact">
+                        <p><i class="fas fa-phone-alt"></i> <a href="tel:+914045678910">+91 40 4567 8910</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:hyderabad@sreshtacouriers.com">hyderabad@sreshtacouriers.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="branch-card">
+                    <h3><i class="fas fa-city"></i> Vijayawada Branch</h3>
+                    <p>Strategic location serving Krishna and West Godavari districts.</p>
+                    <div class="branch-contact">
+                        <p><i class="fas fa-phone-alt"></i> <a href="tel:+918665432100">+91 866 543 2100</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:vijayawada@sreshtacouriers.com">vijayawada@sreshtacouriers.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="faq-section">
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>How can I track my shipment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>You can track your shipment by entering your tracking number (starting with SIC) on our website's tracking page. We also provide tracking updates via SMS and email if you provided your contact details when shipping.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>What are your business hours?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Our business hours are Monday to Friday from 9:00 AM to 7:00 PM, and Saturdays from 9:00 AM to 2:00 PM. We are closed on Sundays and public holidays.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>How do I schedule a pickup?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>You can schedule a pickup by calling our customer service at +91 94939 24742 or by filling out the pickup request form on our website. We require at least 2 hours notice for pickup scheduling.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>We accept cash, credit/debit cards, UPI payments (Google Pay, PhonePe, Paytm), and bank transfers. For corporate accounts, we also offer net payment terms.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>What items are prohibited for shipping?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>We cannot ship hazardous materials, illegal items, perishable goods, live animals, currency, or other prohibited items as per government regulations. Please see our <a href="prohibited-items.html">Prohibited Items</a> page for complete details.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-shipping-fast"></i> SRESHTA International Couriers</h3>
+                    <p>Your trusted partner for fast and reliable logistics solutions across India and internationally.</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Contact Us</h3>
+                    <p>
+                        <i class="fas fa-envelope"></i> 
+                        <a href="mailto:srasthainternationalcouriers@gmail.com" style="color: inherit; text-decoration: none;">
+                            srasthainternationalcouriers@gmail.com
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone-alt"></i> 
+                        <a href="tel:+919493924742" style="color: inherit; text-decoration: none;">
+                            +91 94939 24742
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fas fa-building"></i> 
+                        <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" 
+                           target="_blank" 
+                           style="color: inherit; text-decoration: none;">
+                            7/4, Sali Pet, Arundelpet, Guntur, Andhra Pradesh 522002
+                        </a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                    <p>Saturday: 9:00 AM - 2:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <p>&copy; 2025 SRESHTA International Couriers and Logistics. All rights reserved.</p>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span>Powered by</span>
+                        <a href="https://gantasolutions.com" target="_blank" style="display: inline-block;">
+                            <img src="https://gantasolutions.com/gantasolutions.png" 
+                                 alt="Ganta Solutions Logo" 
+                                 style="height: 30px; width: auto; vertical-align: middle;">
+                        </a>
+                        <span style="color: #aaa;">|</span>
+                        <a href="https://gantasolutions.com" 
+                           target="_blank" 
+                           style="color: #777; text-decoration: none;">
+                            <i class="fas fa-code"></i> Development Team
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Sidebar toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.querySelector('.sidebar');
+            
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Accordion functionality
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
