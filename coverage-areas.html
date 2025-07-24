@@ -6,9 +6,8 @@
     <title>Coverage Areas - SRESHTA INTERNATIONAL COURIERS AND LOGISTICS</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
-        /* Same CSS as in your tracking page */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #1a252f;
@@ -22,20 +21,211 @@
             --text-light: #7f8c8d;
             --border-color: #ddd;
             --sidebar-width: 300px;
+            --header-height: 80px;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6; 
             color: var(--text-color); 
             background-color: #f5f5f5;
             position: relative;
-            padding-right: var(--sidebar-width);
+            padding-right: 0;
             transition: all 0.3s ease;
         }
         
-        /* Same header, sidebar, footer styles as in your tracking page */
-        /* ... (copy all the CSS from your tracking page) ... */
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: var(--header-height);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--light-color);
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background-color: var(--secondary-color);
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            overflow-y: auto;
+        }
+        
+        .sidebar.active {
+            right: 0;
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header img {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-menu a:hover {
+            background-color: rgba(255,255,255,0.1);
+            padding-left: 25px;
+        }
+        
+        .sidebar-menu i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .sidebar-contact {
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Sidebar Toggle */
+        .sidebar-toggle {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            background-color: var(--accent-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1002;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: var(--header-height) auto 0;
+            padding: 20px;
+        }
         
         /* Coverage Areas specific styles */
         .coverage-header {
@@ -45,13 +235,13 @@
         }
         
         .coverage-header h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--primary-color);
             margin-bottom: 15px;
         }
         
         .coverage-header p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-light);
             max-width: 800px;
             margin: 0 auto;
@@ -59,7 +249,7 @@
         
         .coverage-section {
             background: white;
-            padding: 40px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 40px;
@@ -68,15 +258,18 @@
         .coverage-tabs {
             display: flex;
             border-bottom: 1px solid var(--border-color);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
         
         .coverage-tab {
-            padding: 12px 25px;
+            padding: 10px 20px;
             cursor: pointer;
             border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
             font-weight: 500;
+            white-space: nowrap;
         }
         
         .coverage-tab.active {
@@ -99,8 +292,8 @@
         
         .state-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
         }
         
         .state-card {
@@ -121,33 +314,35 @@
             margin-bottom: 10px;
             display: flex;
             align-items: center;
+            font-size: 1rem;
         }
         
         .state-card h3 i {
-            margin-right: 10px;
+            margin-right: 8px;
             color: var(--accent-color);
+            font-size: 0.9rem;
         }
         
         .state-card ul {
-            padding-left: 20px;
+            padding-left: 15px;
+            font-size: 0.8rem;
         }
         
         .state-card ul li {
             margin-bottom: 5px;
-            font-size: 0.9rem;
         }
         
         .international-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
         }
         
         .country-card {
             background: white;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 20px;
+            padding: 15px;
             transition: all 0.3s ease;
         }
         
@@ -159,45 +354,49 @@
         .country-card h3 {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-size: 1rem;
         }
         
         .country-card h3 .flag {
-            width: 30px;
-            height: 20px;
-            margin-right: 10px;
+            width: 25px;
+            height: 15px;
+            margin-right: 8px;
             border-radius: 3px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         
         .country-card p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-light);
         }
         
         .map-container {
-            height: 500px;
+            height: 400px;
             background: #f9f9f9;
             border-radius: 8px;
             overflow: hidden;
-            margin-top: 30px;
+            margin-top: 20px;
             position: relative;
         }
         
         .map-overlay {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
             background: white;
-            padding: 15px;
+            padding: 10px;
             border-radius: 6px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 10;
+            width: calc(100% - 20px);
+            max-width: 250px;
         }
         
         .map-overlay h3 {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--primary-color);
+            font-size: 0.9rem;
         }
         
         .map-overlay select {
@@ -205,15 +404,17 @@
             padding: 8px;
             border: 1px solid var(--border-color);
             border-radius: 4px;
+            font-size: 0.8rem;
         }
         
         .service-points {
-            margin-top: 40px;
+            margin-top: 30px;
         }
         
         .service-point {
             display: flex;
-            margin-bottom: 30px;
+            flex-direction: column;
+            margin-bottom: 20px;
             background: white;
             border-radius: 8px;
             overflow: hidden;
@@ -221,8 +422,7 @@
         }
         
         .service-point-image {
-            flex: 0 0 300px;
-            height: 200px;
+            height: 180px;
         }
         
         .service-point-image img {
@@ -232,23 +432,26 @@
         }
         
         .service-point-content {
-            flex: 1;
-            padding: 25px;
+            padding: 15px;
         }
         
         .service-point-content h3 {
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
         
         .service-point-content p {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: var(--text-light);
+            font-size: 0.9rem;
         }
         
         .service-point-meta {
             display: flex;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.8rem;
         }
         
         .service-point-meta div {
@@ -257,8 +460,163 @@
         }
         
         .service-point-meta i {
-            margin-right: 8px;
+            margin-right: 5px;
             color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px 0 0;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section {
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-section p, .footer-section a {
+            font-size: 0.9rem;
+            color: var(--light-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .footer-section i {
+            margin-right: 8px;
+            width: 15px;
+        }
+        
+        .footer-bottom {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        
+        .footer-bottom p {
+            margin-bottom: 10px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+            
+            .coverage-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .coverage-header p {
+                font-size: 1.1rem;
+            }
+            
+            .coverage-section {
+                padding: 30px;
+            }
+            
+            .state-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            
+            .state-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .state-card ul {
+                font-size: 0.9rem;
+            }
+            
+            .international-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .country-card {
+                padding: 20px;
+            }
+            
+            .country-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .country-card p {
+                font-size: 0.9rem;
+            }
+            
+            .service-point {
+                flex-direction: row;
+            }
+            
+            .service-point-image {
+                flex: 0 0 250px;
+                height: auto;
+            }
+            
+            .service-point-content {
+                padding: 20px;
+            }
+            
+            .service-point-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .service-point-content p {
+                font-size: 0.9rem;
+            }
+            
+            .service-point-meta {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            body {
+                padding-right: var(--sidebar-width);
+            }
+            
+            .sidebar {
+                right: 0;
+            }
+            
+            .sidebar-toggle {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -270,7 +628,7 @@
             <h3>Quick Links</h3>
         </div>
         
-         <ul class="sidebar-menu">
+        <ul class="sidebar-menu">
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
             <li><a href="our-services.html"><i class="fas fa-shipping-fast"></i> Our Services</a></li>
@@ -350,113 +708,19 @@
                 <h2 style="margin-bottom: 20px; color: var(--primary-color);"><i class="fas fa-truck"></i> Domestic Network</h2>
                 <p style="margin-bottom: 30px; color: var(--text-light);">We serve all major cities and towns across India with reliable delivery services. Below are some of our key service areas:</p>
                 
-                <div class="state-grid">
-                    <div class="state-card">
-                        <h3><i class="fas fa-city"></i> Andhra Pradesh</h3>
-                        <ul>
-                            <li>Guntur</li>
-                            <li>Vijayawada</li>
-                            <li>Visakhapatnam</li>
-                            <li>Tirupati</li>
-                            <li>Nellore</li>
-                            <li>Kakinada</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="state-card">
-                        <h3><i class="fas fa-city"></i> Telangana</h3>
-                        <ul>
-                            <li>Hyderabad</li>
-                            <li>Warangal</li>
-                            <li>Karimnagar</li>
-                            <li>Nizamabad</li>
-                            <li>Khammam</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="state-card">
-                        <h3><i class="fas fa-city"></i> Tamil Nadu</h3>
-                        <ul>
-                            <li>Chennai</li>
-                            <li>Coimbatore</li>
-                            <li>Madurai</li>
-                            <li>Tiruchirappalli</li>
-                            <li>Salem</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="state-card">
-                        <h3><i class="fas fa-city"></i> Karnataka</h3>
-                        <ul>
-                            <li>Bangalore</li>
-                            <li>Mysore</li>
-                            <li>Hubli</li>
-                            <li>Mangalore</li>
-                            <li>Belgaum</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="state-card">
-                        <h3><i class="fas fa-city"></i> Maharashtra</h3>
-                        <ul>
-                            <li>Mumbai</li>
-                            <li>Pune</li>
-                            <li>Nagpur</li>
-                            <li>Nashik</li>
-                            <li>Aurangabad</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="state-card">
-                        <h3><i class="fas fa-city"></i> Delhi NCR</h3>
-                        <ul>
-                            <li>New Delhi</li>
-                            <li>Gurgaon</li>
-                            <li>Noida</li>
-                            <li>Faridabad</li>
-                            <li>Ghaziabad</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="state-card">
-                        <h3><i class="fas fa-city"></i> West Bengal</h3>
-                        <ul>
-                            <li>Kolkata</li>
-                            <li>Howrah</li>
-                            <li>Durgapur</li>
-                            <li>Siliguri</li>
-                            <li>Asansol</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="state-card">
-                        <h3><i class="fas fa-city"></i> Kerala</h3>
-                        <ul>
-                            <li>Kochi</li>
-                            <li>Thiruvananthapuram</li>
-                            <li>Kozhikode</li>
-                            <li>Thrissur</li>
-                            <li>Kannur</li>
-                        </ul>
-                    </div>
+                <div class="state-grid" id="stateGrid">
+                    <!-- States will be loaded dynamically -->
                 </div>
                 
                 <div class="map-container">
                     <div class="map-overlay">
                         <h3>Our Domestic Network</h3>
-                        <select>
-                            <option>Select State</option>
-                            <option>Andhra Pradesh</option>
-                            <option>Telangana</option>
-                            <option>Tamil Nadu</option>
-                            <option>Karnataka</option>
-                            <option>Maharashtra</option>
-                            <option>Delhi NCR</option>
-                            <option>West Bengal</option>
-                            <option>Kerala</option>
+                        <select id="stateSelect">
+                            <option value="">Select State</option>
+                            <!-- States will be loaded dynamically -->
                         </select>
                     </div>
-                    <!-- Map would be implemented with JavaScript -->
+                    <div id="map"></div>
                 </div>
             </div>
             
@@ -464,46 +728,8 @@
                 <h2 style="margin-bottom: 20px; color: var(--primary-color);"><i class="fas fa-globe"></i> International Network</h2>
                 <p style="margin-bottom: 30px; color: var(--text-light);">We provide reliable international shipping services to major destinations worldwide through our global partners.</p>
                 
-                <div class="international-grid">
-                    <div class="country-card">
-                        <h3><img src="https://flagcdn.com/w20/us.png" class="flag" alt="USA"> United States</h3>
-                        <p>Express delivery to all major cities including New York, Los Angeles, Chicago, Houston, Miami</p>
-                    </div>
-                    
-                    <div class="country-card">
-                        <h3><img src="https://flagcdn.com/w20/gb.png" class="flag" alt="UK"> United Kingdom</h3>
-                        <p>Comprehensive coverage including London, Manchester, Birmingham, Edinburgh, Glasgow</p>
-                    </div>
-                    
-                    <div class="country-card">
-                        <h3><img src="https://flagcdn.com/w20/ae.png" class="flag" alt="UAE"> UAE</h3>
-                        <p>Fast delivery to Dubai, Abu Dhabi, Sharjah, Ajman with customs clearance assistance</p>
-                    </div>
-                    
-                    <div class="country-card">
-                        <h3><img src="https://flagcdn.com/w20/sg.png" class="flag" alt="Singapore"> Singapore</h3>
-                        <p>Reliable service to all areas with next-day delivery options available</p>
-                    </div>
-                    
-                    <div class="country-card">
-                        <h3><img src="https://flagcdn.com/w20/my.png" class="flag" alt="Malaysia"> Malaysia</h3>
-                        <p>Coverage includes Kuala Lumpur, Penang, Johor Bahru, Malacca, Ipoh</p>
-                    </div>
-                    
-                    <div class="country-card">
-                        <h3><img src="https://flagcdn.com/w20/ca.png" class="flag" alt="Canada"> Canada</h3>
-                        <p>Service to Toronto, Vancouver, Montreal, Calgary, Ottawa with tracking</p>
-                    </div>
-                    
-                    <div class="country-card">
-                        <h3><img src="https://flagcdn.com/w20/au.png" class="flag" alt="Australia"> Australia</h3>
-                        <p>Delivery to Sydney, Melbourne, Brisbane, Perth, Adelaide with customs support</p>
-                    </div>
-                    
-                    <div class="country-card">
-                        <h3><img src="https://flagcdn.com/w20/sa.png" class="flag" alt="Saudi Arabia"> Saudi Arabia</h3>
-                        <p>Coverage for Riyadh, Jeddah, Dammam, Mecca, Medina with special handling</p>
-                    </div>
+                <div class="international-grid" id="countryGrid">
+                    <!-- Countries will be loaded dynamically -->
                 </div>
             </div>
             
@@ -511,51 +737,8 @@
                 <h2 style="margin-bottom: 20px; color: var(--primary-color);"><i class="fas fa-store"></i> Our Service Points</h2>
                 <p style="margin-bottom: 30px; color: var(--text-light);">Visit our conveniently located service centers for all your shipping needs with professional assistance.</p>
                 
-                <div class="service-points">
-                    <div class="service-point">
-                        <div class="service-point-image">
-                            <img src="img/guntur-office.jpg" alt="Guntur Office">
-                        </div>
-                        <div class="service-point-content">
-                            <h3>Guntur Head Office</h3>
-                            <p>Our flagship service center with full-range logistics services and customer support.</p>
-                            <div class="service-point-meta">
-                                <div><i class="fas fa-map-marker-alt"></i> 7/4, Sali Pet, Arundelpet, Guntur</div>
-                                <div><i class="fas fa-phone-alt"></i> +91 94939 24742</div>
-                                <div><i class="fas fa-clock"></i> Mon-Sat: 9AM-7PM</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-point">
-                        <div class="service-point-image">
-                            <img src="img/hyderabad-office.jpg" alt="Hyderabad Office">
-                        </div>
-                        <div class="service-point-content">
-                            <h3>Hyderabad Branch</h3>
-                            <p>Full-service location with international shipping specialists and warehouse facilities.</p>
-                            <div class="service-point-meta">
-                                <div><i class="fas fa-map-marker-alt"></i> 3-5-890, Himayatnagar, Hyderabad</div>
-                                <div><i class="fas fa-phone-alt"></i> +91 40 4567 8910</div>
-                                <div><i class="fas fa-clock"></i> Mon-Sat: 9AM-7PM</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-point">
-                        <div class="service-point-image">
-                            <img src="img/vizag-office.jpg" alt="Vizag Office">
-                        </div>
-                        <div class="service-point-content">
-                            <h3>Visakhapatnam Branch</h3>
-                            <p>Strategic location for coastal shipping with cargo handling capabilities.</p>
-                            <div class="service-point-meta">
-                                <div><i class="fas fa-map-marker-alt"></i> 45-6-30, Dwarakanagar, Visakhapatnam</div>
-                                <div><i class="fas fa-phone-alt"></i> +91 891 654 3210</div>
-                                <div><i class="fas fa-clock"></i> Mon-Sat: 9AM-7PM</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="service-points" id="servicePoints">
+                    <!-- Service points will be loaded dynamically -->
                 </div>
             </div>
         </section>
@@ -620,9 +803,130 @@
         </div>
     </footer>
     
+    <!-- Leaflet JS for Maps -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
     <script>
-        // Sidebar toggle functionality
+        // Data for dynamic content
+        const statesData = [
+            {
+                name: "Andhra Pradesh",
+                cities: ["Guntur", "Vijayawada", "Visakhapatnam", "Tirupati", "Nellore", "Kakinada"],
+                coordinates: [15.9129, 79.7400] // Approximate center of AP
+            },
+            {
+                name: "Telangana",
+                cities: ["Hyderabad", "Warangal", "Karimnagar", "Nizamabad", "Khammam"],
+                coordinates: [18.1124, 79.0193]
+            },
+            {
+                name: "Tamil Nadu",
+                cities: ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem"],
+                coordinates: [11.1271, 78.6569]
+            },
+            {
+                name: "Karnataka",
+                cities: ["Bangalore", "Mysore", "Hubli", "Mangalore", "Belgaum"],
+                coordinates: [15.3173, 75.7139]
+            },
+            {
+                name: "Maharashtra",
+                cities: ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad"],
+                coordinates: [19.7515, 75.7139]
+            },
+            {
+                name: "Delhi NCR",
+                cities: ["New Delhi", "Gurgaon", "Noida", "Faridabad", "Ghaziabad"],
+                coordinates: [28.6139, 77.2090]
+            },
+            {
+                name: "West Bengal",
+                cities: ["Kolkata", "Howrah", "Durgapur", "Siliguri", "Asansol"],
+                coordinates: [22.9868, 87.8550]
+            },
+            {
+                name: "Kerala",
+                cities: ["Kochi", "Thiruvananthapuram", "Kozhikode", "Thrissur", "Kannur"],
+                coordinates: [10.8505, 76.2711]
+            }
+        ];
+
+        const countriesData = [
+            {
+                name: "United States",
+                code: "us",
+                description: "Express delivery to all major cities including New York, Los Angeles, Chicago, Houston, Miami"
+            },
+            {
+                name: "United Kingdom",
+                code: "gb",
+                description: "Comprehensive coverage including London, Manchester, Birmingham, Edinburgh, Glasgow"
+            },
+            {
+                name: "UAE",
+                code: "ae",
+                description: "Fast delivery to Dubai, Abu Dhabi, Sharjah, Ajman with customs clearance assistance"
+            },
+            {
+                name: "Singapore",
+                code: "sg",
+                description: "Reliable service to all areas with next-day delivery options available"
+            },
+            {
+                name: "Malaysia",
+                code: "my",
+                description: "Coverage includes Kuala Lumpur, Penang, Johor Bahru, Malacca, Ipoh"
+            },
+            {
+                name: "Canada",
+                code: "ca",
+                description: "Service to Toronto, Vancouver, Montreal, Calgary, Ottawa with tracking"
+            },
+            {
+                name: "Australia",
+                code: "au",
+                description: "Delivery to Sydney, Melbourne, Brisbane, Perth, Adelaide with customs support"
+            },
+            {
+                name: "Saudi Arabia",
+                code: "sa",
+                description: "Coverage for Riyadh, Jeddah, Dammam, Mecca, Medina with special handling"
+            }
+        ];
+
+        const servicePointsData = [
+            {
+                name: "Guntur Head Office",
+                description: "Our flagship service center with full-range logistics services and customer support.",
+                image: "img/guntur-office.jpg",
+                address: "7/4, Sali Pet, Arundelpet, Guntur",
+                phone: "+91 94939 24742",
+                hours: "Mon-Sat: 9AM-7PM",
+                coordinates: [16.3067, 80.4365] // Guntur coordinates
+            },
+            {
+                name: "Hyderabad Branch",
+                description: "Full-service location with international shipping specialists and warehouse facilities.",
+                image: "img/hyderabad-office.jpg",
+                address: "3-5-890, Himayatnagar, Hyderabad",
+                phone: "+91 40 4567 8910",
+                hours: "Mon-Sat: 9AM-7PM",
+                coordinates: [17.3850, 78.4867] // Hyderabad coordinates
+            },
+            {
+                name: "Visakhapatnam Branch",
+                description: "Strategic location for coastal shipping with cargo handling capabilities.",
+                image: "img/vizag-office.jpg",
+                address: "45-6-30, Dwarakanagar, Visakhapatnam",
+                phone: "+91 891 654 3210",
+                hours: "Mon-Sat: 9AM-7PM",
+                coordinates: [17.6868, 83.2185] // Visakhapatnam coordinates
+            }
+        ];
+
+        // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
+            // Sidebar toggle functionality
             const sidebarToggle = document.getElementById('sidebarToggle');
             const sidebar = document.querySelector('.sidebar');
             
@@ -647,9 +951,136 @@
                     // Show corresponding content
                     const tabId = this.getAttribute('data-tab');
                     document.getElementById(`${tabId}-content`).classList.add('active');
+                    
+                    // Initialize map if domestic tab is selected
+                    if (tabId === 'domestic' && !window.mapInitialized) {
+                        initMap();
+                        window.mapInitialized = true;
+                    }
                 });
             });
+            
+            // Load states data
+            loadStates();
+            
+            // Load countries data
+            loadCountries();
+            
+            // Load service points
+            loadServicePoints();
+            
+            // Initialize map for the first time if domestic is active
+            if (document.getElementById('domestic-content').classList.contains('active')) {
+                initMap();
+                window.mapInitialized = true;
+            }
         });
+        
+        function loadStates() {
+            const stateGrid = document.getElementById('stateGrid');
+            const stateSelect = document.getElementById('stateSelect');
+            
+            statesData.forEach(state => {
+                // Add state card to grid
+                const stateCard = document.createElement('div');
+                stateCard.className = 'state-card';
+                stateCard.innerHTML = `
+                    <h3><i class="fas fa-city"></i> ${state.name}</h3>
+                    <ul>
+                        ${state.cities.map(city => `<li>${city}</li>`).join('')}
+                    </ul>
+                `;
+                stateGrid.appendChild(stateCard);
+                
+                // Add option to select
+                const option = document.createElement('option');
+                option.value = state.name;
+                option.textContent = state.name;
+                stateSelect.appendChild(option);
+            });
+            
+            // Add event listener to state select
+            stateSelect.addEventListener('change', function() {
+                if (this.value) {
+                    const selectedState = statesData.find(state => state.name === this.value);
+                    if (selectedState && window.map) {
+                        window.map.setView(selectedState.coordinates, 7);
+                    }
+                }
+            });
+        }
+        
+        function loadCountries() {
+            const countryGrid = document.getElementById('countryGrid');
+            
+            countriesData.forEach(country => {
+                const countryCard = document.createElement('div');
+                countryCard.className = 'country-card';
+                countryCard.innerHTML = `
+                    <h3><img src="https://flagcdn.com/w20/${country.code}.png" class="flag" alt="${country.name}"> ${country.name}</h3>
+                    <p>${country.description}</p>
+                `;
+                countryGrid.appendChild(countryCard);
+            });
+        }
+        
+        function loadServicePoints() {
+            const servicePointsContainer = document.getElementById('servicePoints');
+            
+            servicePointsData.forEach(point => {
+                const servicePoint = document.createElement('div');
+                servicePoint.className = 'service-point';
+                servicePoint.innerHTML = `
+                    <div class="service-point-image">
+                        <img src="${point.image}" alt="${point.name}">
+                    </div>
+                    <div class="service-point-content">
+                        <h3>${point.name}</h3>
+                        <p>${point.description}</p>
+                        <div class="service-point-meta">
+                            <div><i class="fas fa-map-marker-alt"></i> ${point.address}</div>
+                            <div><i class="fas fa-phone-alt"></i> ${point.phone}</div>
+                            <div><i class="fas fa-clock"></i> ${point.hours}</div>
+                        </div>
+                    </div>
+                `;
+                servicePointsContainer.appendChild(servicePoint);
+            });
+        }
+        
+        function initMap() {
+            // Initialize map centered on India
+            const map = L.map('map').setView([20.5937, 78.9629], 5);
+            
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add markers for each state
+            statesData.forEach(state => {
+                L.marker(state.coordinates)
+                    .addTo(map)
+                    .bindPopup(`<b>${state.name}</b><br>${state.cities.slice(0, 3).join(', ')}${state.cities.length > 3 ? '...' : ''}`);
+            });
+            
+            // Add markers for service points
+            servicePointsData.forEach(point => {
+                L.marker(point.coordinates)
+                    .addTo(map)
+                    .bindPopup(`<b>${point.name}</b><br>${point.address}`)
+                    .setIcon(
+                        L.icon({
+                            iconUrl: 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png',
+                            iconSize: [30, 30],
+                            iconAnchor: [15, 30]
+                        })
+                    );
+            });
+            
+            // Store map reference
+            window.map = map;
+        }
     </script>
 </body>
 </html>
