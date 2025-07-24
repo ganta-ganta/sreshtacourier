@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coverage Areas - SRESHTA INTERNATIONAL COURIERS AND LOGISTICS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Same CSS as in your tracking page */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #1a252f;
+            --accent-color: #ff6600;
+            --success-color: #27ae60;        
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --border-color: #ddd;
+            --sidebar-width: 300px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6; 
+            color: var(--text-color); 
+            background-color: #f5f5f5;
+            position: relative;
+            padding-right: var(--sidebar-width);
+            transition: all 0.3s ease;
+        }
+        
+        /* Same header, sidebar, footer styles as in your tracking page */
+        /* ... (copy all the CSS from your tracking page) ... */
+        
+        /* Coverage Areas specific styles */
+        .coverage-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .coverage-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .coverage-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .coverage-section {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .coverage-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        
+        .coverage-tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .coverage-tab.active {
+            border-bottom: 3px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .coverage-tab:hover:not(.active) {
+            border-bottom: 3px solid var(--text-light);
+        }
+        
+        .coverage-content {
+            display: none;
+        }
+        
+        .coverage-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .state-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .state-card {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .state-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .state-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .state-card h3 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .state-card ul {
+            padding-left: 20px;
+        }
+        
+        .state-card ul li {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .international-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .country-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .country-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .country-card h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .country-card h3 .flag {
+            width: 30px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .country-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .map-container {
+            height: 500px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 30px;
+            position: relative;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        
+        .map-overlay h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .map-overlay select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        
+        .service-points {
+            margin-top: 40px;
+        }
+        
+        .service-point {
+            display: flex;
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .service-point-image {
+            flex: 0 0 300px;
+            height: 200px;
+        }
+        
+        .service-point-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .service-point-content {
+            flex: 1;
+            padding: 25px;
+        }
+        
+        .service-point-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .service-point-content p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .service-point-meta {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .service-point-meta div {
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-point-meta i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Right Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="img/logo-white.png" alt="SRESHTA International Logo">
+            <h3>Quick Links</h3>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about-us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="our-services.html"><i class="fas fa-shipping-fast"></i> Our Services</a></li>
+            <li><a href="coverage-areas.html" class="active"><i class="fas fa-map-marked-alt"></i> Coverage Areas</a></li>
+            <li><a href="contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+        </ul>
+        
+        <div class="sidebar-contact">
+            <h3><i class="fas fa-headset"></i> Contact Details</h3>
+            
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+919493924742">+91 94939 24742</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:srasthainternationalcouriers@gmail.com">srasthainternationalcouriers@gmail.com</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <a href="https://wa.me/919493924742" target="_blank">WhatsApp Chat</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" target="_blank">Our Location</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Mobile Sidebar Toggle -->
+    <div class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919493924742" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="img/logo.png" alt="SRESHTA International Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>SRESHTA INTERNATIONAL COURIERS</h1>
+                    <p>Fast, Reliable & Secure Logistics Solutions</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="coverage-header">
+            <h1><i class="fas fa-map-marked-alt"></i> Our Coverage Areas</h1>
+            <p>We provide comprehensive logistics services across India and select international destinations with reliable delivery networks.</p>
+        </section>
+        
+        <section class="coverage-section">
+            <div class="coverage-tabs">
+                <div class="coverage-tab active" data-tab="domestic">Domestic Coverage</div>
+                <div class="coverage-tab" data-tab="international">International Coverage</div>
+                <div class="coverage-tab" data-tab="service-points">Service Points</div>
+            </div>
+            
+            <div class="coverage-content active" id="domestic-content">
+                <h2 style="margin-bottom: 20px; color: var(--primary-color);"><i class="fas fa-truck"></i> Domestic Network</h2>
+                <p style="margin-bottom: 30px; color: var(--text-light);">We serve all major cities and towns across India with reliable delivery services. Below are some of our key service areas:</p>
+                
+                <div class="state-grid">
+                    <div class="state-card">
+                        <h3><i class="fas fa-city"></i> Andhra Pradesh</h3>
+                        <ul>
+                            <li>Guntur</li>
+                            <li>Vijayawada</li>
+                            <li>Visakhapatnam</li>
+                            <li>Tirupati</li>
+                            <li>Nellore</li>
+                            <li>Kakinada</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="state-card">
+                        <h3><i class="fas fa-city"></i> Telangana</h3>
+                        <ul>
+                            <li>Hyderabad</li>
+                            <li>Warangal</li>
+                            <li>Karimnagar</li>
+                            <li>Nizamabad</li>
+                            <li>Khammam</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="state-card">
+                        <h3><i class="fas fa-city"></i> Tamil Nadu</h3>
+                        <ul>
+                            <li>Chennai</li>
+                            <li>Coimbatore</li>
+                            <li>Madurai</li>
+                            <li>Tiruchirappalli</li>
+                            <li>Salem</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="state-card">
+                        <h3><i class="fas fa-city"></i> Karnataka</h3>
+                        <ul>
+                            <li>Bangalore</li>
+                            <li>Mysore</li>
+                            <li>Hubli</li>
+                            <li>Mangalore</li>
+                            <li>Belgaum</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="state-card">
+                        <h3><i class="fas fa-city"></i> Maharashtra</h3>
+                        <ul>
+                            <li>Mumbai</li>
+                            <li>Pune</li>
+                            <li>Nagpur</li>
+                            <li>Nashik</li>
+                            <li>Aurangabad</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="state-card">
+                        <h3><i class="fas fa-city"></i> Delhi NCR</h3>
+                        <ul>
+                            <li>New Delhi</li>
+                            <li>Gurgaon</li>
+                            <li>Noida</li>
+                            <li>Faridabad</li>
+                            <li>Ghaziabad</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="state-card">
+                        <h3><i class="fas fa-city"></i> West Bengal</h3>
+                        <ul>
+                            <li>Kolkata</li>
+                            <li>Howrah</li>
+                            <li>Durgapur</li>
+                            <li>Siliguri</li>
+                            <li>Asansol</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="state-card">
+                        <h3><i class="fas fa-city"></i> Kerala</h3>
+                        <ul>
+                            <li>Kochi</li>
+                            <li>Thiruvananthapuram</li>
+                            <li>Kozhikode</li>
+                            <li>Thrissur</li>
+                            <li>Kannur</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <div class="map-overlay">
+                        <h3>Our Domestic Network</h3>
+                        <select>
+                            <option>Select State</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Telangana</option>
+                            <option>Tamil Nadu</option>
+                            <option>Karnataka</option>
+                            <option>Maharashtra</option>
+                            <option>Delhi NCR</option>
+                            <option>West Bengal</option>
+                            <option>Kerala</option>
+                        </select>
+                    </div>
+                    <!-- Map would be implemented with JavaScript -->
+                </div>
+            </div>
+            
+            <div class="coverage-content" id="international-content">
+                <h2 style="margin-bottom: 20px; color: var(--primary-color);"><i class="fas fa-globe"></i> International Network</h2>
+                <p style="margin-bottom: 30px; color: var(--text-light);">We provide reliable international shipping services to major destinations worldwide through our global partners.</p>
+                
+                <div class="international-grid">
+                    <div class="country-card">
+                        <h3><img src="https://flagcdn.com/w20/us.png" class="flag" alt="USA"> United States</h3>
+                        <p>Express delivery to all major cities including New York, Los Angeles, Chicago, Houston, Miami</p>
+                    </div>
+                    
+                    <div class="country-card">
+                        <h3><img src="https://flagcdn.com/w20/gb.png" class="flag" alt="UK"> United Kingdom</h3>
+                        <p>Comprehensive coverage including London, Manchester, Birmingham, Edinburgh, Glasgow</p>
+                    </div>
+                    
+                    <div class="country-card">
+                        <h3><img src="https://flagcdn.com/w20/ae.png" class="flag" alt="UAE"> UAE</h3>
+                        <p>Fast delivery to Dubai, Abu Dhabi, Sharjah, Ajman with customs clearance assistance</p>
+                    </div>
+                    
+                    <div class="country-card">
+                        <h3><img src="https://flagcdn.com/w20/sg.png" class="flag" alt="Singapore"> Singapore</h3>
+                        <p>Reliable service to all areas with next-day delivery options available</p>
+                    </div>
+                    
+                    <div class="country-card">
+                        <h3><img src="https://flagcdn.com/w20/my.png" class="flag" alt="Malaysia"> Malaysia</h3>
+                        <p>Coverage includes Kuala Lumpur, Penang, Johor Bahru, Malacca, Ipoh</p>
+                    </div>
+                    
+                    <div class="country-card">
+                        <h3><img src="https://flagcdn.com/w20/ca.png" class="flag" alt="Canada"> Canada</h3>
+                        <p>Service to Toronto, Vancouver, Montreal, Calgary, Ottawa with tracking</p>
+                    </div>
+                    
+                    <div class="country-card">
+                        <h3><img src="https://flagcdn.com/w20/au.png" class="flag" alt="Australia"> Australia</h3>
+                        <p>Delivery to Sydney, Melbourne, Brisbane, Perth, Adelaide with customs support</p>
+                    </div>
+                    
+                    <div class="country-card">
+                        <h3><img src="https://flagcdn.com/w20/sa.png" class="flag" alt="Saudi Arabia"> Saudi Arabia</h3>
+                        <p>Coverage for Riyadh, Jeddah, Dammam, Mecca, Medina with special handling</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="coverage-content" id="service-points-content">
+                <h2 style="margin-bottom: 20px; color: var(--primary-color);"><i class="fas fa-store"></i> Our Service Points</h2>
+                <p style="margin-bottom: 30px; color: var(--text-light);">Visit our conveniently located service centers for all your shipping needs with professional assistance.</p>
+                
+                <div class="service-points">
+                    <div class="service-point">
+                        <div class="service-point-image">
+                            <img src="img/guntur-office.jpg" alt="Guntur Office">
+                        </div>
+                        <div class="service-point-content">
+                            <h3>Guntur Head Office</h3>
+                            <p>Our flagship service center with full-range logistics services and customer support.</p>
+                            <div class="service-point-meta">
+                                <div><i class="fas fa-map-marker-alt"></i> 7/4, Sali Pet, Arundelpet, Guntur</div>
+                                <div><i class="fas fa-phone-alt"></i> +91 94939 24742</div>
+                                <div><i class="fas fa-clock"></i> Mon-Sat: 9AM-7PM</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-point">
+                        <div class="service-point-image">
+                            <img src="img/hyderabad-office.jpg" alt="Hyderabad Office">
+                        </div>
+                        <div class="service-point-content">
+                            <h3>Hyderabad Branch</h3>
+                            <p>Full-service location with international shipping specialists and warehouse facilities.</p>
+                            <div class="service-point-meta">
+                                <div><i class="fas fa-map-marker-alt"></i> 3-5-890, Himayatnagar, Hyderabad</div>
+                                <div><i class="fas fa-phone-alt"></i> +91 40 4567 8910</div>
+                                <div><i class="fas fa-clock"></i> Mon-Sat: 9AM-7PM</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-point">
+                        <div class="service-point-image">
+                            <img src="img/vizag-office.jpg" alt="Vizag Office">
+                        </div>
+                        <div class="service-point-content">
+                            <h3>Visakhapatnam Branch</h3>
+                            <p>Strategic location for coastal shipping with cargo handling capabilities.</p>
+                            <div class="service-point-meta">
+                                <div><i class="fas fa-map-marker-alt"></i> 45-6-30, Dwarakanagar, Visakhapatnam</div>
+                                <div><i class="fas fa-phone-alt"></i> +91 891 654 3210</div>
+                                <div><i class="fas fa-clock"></i> Mon-Sat: 9AM-7PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-shipping-fast"></i> SRESHTA International Couriers</h3>
+                    <p>Your trusted partner for fast and reliable logistics solutions across India and internationally.</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Contact Us</h3>
+                    <p>
+                        <i class="fas fa-envelope"></i> 
+                        <a href="mailto:srasthainternationalcouriers@gmail.com" style="color: inherit; text-decoration: none;">
+                            srasthainternationalcouriers@gmail.com
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone-alt"></i> 
+                        <a href="tel:+919493924742" style="color: inherit; text-decoration: none;">
+                            +91 94939 24742
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fas fa-building"></i> 
+                        <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" 
+                           target="_blank" 
+                           style="color: inherit; text-decoration: none;">
+                            7/4, Sali Pet, Arundelpet, Guntur, Andhra Pradesh 522002
+                        </a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                    <p>Saturday: 9:00 AM - 2:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <p>&copy; 2025 SRESHTA International Couriers and Logistics. All rights reserved.</p>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span>Powered by</span>
+                        <a href="https://gantasolutions.com" target="_blank" style="display: inline-block;">
+                            <img src="https://gantasolutions.com/gantasolutions.png" 
+                                 alt="Ganta Solutions Logo" 
+                                 style="height: 30px; width: auto; vertical-align: middle;">
+                        </a>
+                        <span style="color: #aaa;">|</span>
+                        <a href="https://gantasolutions.com" 
+                           target="_blank" 
+                           style="color: #777; text-decoration: none;">
+                            <i class="fas fa-code"></i> Development Team
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Sidebar toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.querySelector('.sidebar');
+            
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+            
+            // Tab functionality
+            const tabs = document.querySelectorAll('.coverage-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all content
+                    document.querySelectorAll('.coverage-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-content`).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
