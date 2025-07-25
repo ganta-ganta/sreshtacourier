@@ -1,0 +1,3192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRESHTA International Couriers - Fast & Reliable Logistics Solutions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Leaflet CSS (for map) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
+    
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #6c757d;
+            --accent-color: #ff6b00;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #003366);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text span {
+            color: var(--accent-color);
+        }
+        
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        nav ul li a.active {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/hero-bg.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e05d00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Tracking Section */
+        .tracking-section {
+            background-color: white;
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .tracking-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tracking-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+            outline: none;
+        }
+        
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-color);
+        }
+        
+        .tracking-result {
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .package-info {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .info-item {
+            margin-bottom: 1rem;
+        }
+        
+        .label {
+            font-weight: 600;
+            color: var(--dark-color);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        
+        .value {
+            color: var(--secondary-color);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .status-created {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .status-shipped {
+            background-color: #fff8e1;
+            color: #ff8f00;
+        }
+        
+        .status-transit {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .status-arrived {
+            background-color: #e0f7fa;
+            color: #00acc1;
+        }
+        
+        .status-delivery {
+            background-color: #f3e5f5;
+            color: #8e24aa;
+        }
+        
+        .status-delivered {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e0e0e0;
+        }
+        
+        .timeline-step {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .timeline-step.completed::before {
+            background-color: var(--success-color);
+        }
+        
+        .timeline-step.active::before {
+            background-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.2);
+        }
+        
+        .timeline-step h4 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-step h4 i {
+            margin-right: 0.5rem;
+        }
+        
+        .timeline-step p {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-date i {
+            margin-right: 0.3rem;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .service-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-content h2 i {
+            margin-right: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .service-content p {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .service-content ul {
+            list-style: none;
+        }
+        
+        .service-content ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .service-content ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .feature-card:hover i,
+        .feature-card:hover h3,
+        .feature-card:hover p {
+            color: white;
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card p {
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 0;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            width: 20%;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .about-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .about-card h2 i {
+            margin-right: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .about-card p {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .about-card ul {
+            list-style: none;
+        }
+        
+        .about-card ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .about-card ul li::before {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+        
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-card {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 86, 179, 0.2);
+        }
+        
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card .label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .team-member h3 {
+            font-size: 1.3rem;
+            margin: 1rem 0 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .team-member p {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-member p:last-child {
+            padding: 0 1rem 1.5rem;
+        }
+        
+        /* Coverage Map Section */
+        .coverage-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        #coverageMap {
+            height: 500px;
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container {
+            position: relative;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .map-overlay h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .map-overlay ul {
+            list-style: none;
+        }
+        
+        .map-overlay ul li {
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .map-overlay ul li i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        /* Calculator Section */
+        .calculator-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .calculator-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+        }
+        
+        .floating-label {
+            position: relative;
+        }
+        
+        .floating-label label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: var(--secondary-color);
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+        
+        .floating-label input:focus + label,
+        .floating-label input:not(:placeholder-shown) + label {
+            top: -0.5rem;
+            left: 0.8rem;
+            font-size: 0.8rem;
+            background-color: white;
+            padding: 0 0.2rem;
+            color: var(--primary-color);
+        }
+        
+        .result-card {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .result-card h5 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .result-card h5 i {
+            margin-right: 0.8rem;
+        }
+        
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Prohibited Items Section */
+        .prohibited-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .prohibited-tabs .nav-link {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            border: 1px solid #ddd;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .prohibited-tabs .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .prohibited-tabs .nav-link:hover:not(.active) {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .prohibited-item {
+            transition: all 0.3s ease;
+        }
+        
+        .prohibited-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .prohibited-item .icon-box {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+            margin-right: 1rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .testimonial-slider {
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 0 1rem;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 3rem;
+            color: rgba(0, 86, 179, 0.1);
+            z-index: 0;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        .rating {
+            color: var(--warning-color);
+            margin-top: 0.3rem;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 5px !important;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+        
+        .accordion-button {
+            font-weight: 500;
+            padding: 1.2rem 1.5rem;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(0, 86, 179, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: #ddd;
+        }
+        
+        .accordion-body {
+            padding: 1.5rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card p {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .footer-section p {
+            color: #aaa;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-section ul li a i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+            width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-bottom p {
+            color: #aaa;
+            margin-bottom: 0;
+        }
+        
+        .footer-bottom a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: all 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .sidebar.active {
+            right: 0;
+        }
+        
+        .sidebar-header {
+            padding: 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .sidebar-header img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+        
+        .sidebar-header h3 {
+            margin-bottom: 0;
+        }
+        
+        .sidebar-menu {
+            padding: 1.5rem;
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-menu li a:hover {
+            background-color: rgba(0, 86, 179, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .sidebar-menu li a.active {
+            background-color: rgba(0, 86, 179, 0.1);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .sidebar-menu li a i {
+            margin-right: 0.8rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .sidebar-contact {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .sidebar-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-contact h3 i {
+            margin-right: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item i {
+            margin-right: 0.8rem;
+            color: var(--accent-color);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-item a {
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item a:hover {
+            color: var(--primary-color);
+        }
+        
+        .sidebar .social-links {
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        /* Floating Buttons */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .animate-delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+            }
+            
+            nav ul li a {
+                color: var(--dark-color);
+                font-size: 1.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .process-steps {
+                flex-wrap: wrap;
+            }
+            
+            .process-step {
+                width: 50%;
+                margin-bottom: 2rem;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .process-step {
+                width: 100%;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .sidebar {
+                width: 300px;
+                right: -300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                bottom: 80px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="img/logo-white.png" alt="SRESHTA International Logo">
+                <div class="logo-text">SRESHTA <span>Couriers</span></div>
+            </div>
+            
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#tracking">Tracking</a></li>
+                    <li><a href="#coverage">Coverage</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Fast & Reliable Courier Services Worldwide</h1>
+            <p class="animate__animated animate__fadeInUp">Delivering your packages with care and precision across India and internationally since 2015.</p>
+            <div class="hero-buttons">
+                <a href="#tracking" class="btn btn-primary animate__animated animate__fadeIn">Track Shipment</a>
+                <a href="#contact" class="btn btn-secondary animate__animated animate__fadeIn">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section class="tracking-section" id="tracking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Track Your Shipment</h2>
+                <p>Enter your tracking number to get real-time updates on your package's journey</p>
+            </div>
+            
+            <div class="tracking-container">
+                <form id="trackingForm" class="tracking-form">
+                    <div class="form-group">
+                        <label for="trackingNumber">Tracking Number</label>
+                        <input type="text" class="form-control" id="trackingNumber" placeholder="SIC00000001" required>
+                        <i class="fas fa-barcode input-icon"></i>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search me-2"></i> Track Package
+                    </button>
+                </form>
+                
+                <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Fetching shipment details...</p>
+                </div>
+                
+                <div class="alert alert-danger" id="errorMessage" style="display: none;">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    <span id="errorText"></span>
+                </div>
+                
+                <div class="tracking-result" id="trackingResult" style="display: none;">
+                    <div class="package-info">
+                        <h3><i class="fas fa-box-open me-2"></i> Shipment Details</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Status:</span>
+                                <span id="resultStatus" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Customer Name:</span>
+                                <span id="resultCustomerName" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Tracking Number:</span>
+                                <span id="resultTrackingNumber" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Origin:</span>
+                                <span id="resultOrigin" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Destination:</span>
+                                <span id="resultDestination" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Weight:</span>
+                                <span id="resultWeight" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Forwarding AWB:</span>
+                                <span id="resultForwardingAWB" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Last Updated:</span>
+                                <span id="resultUpdated" class="value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <h3><i class="fas fa-map-marked-alt me-2"></i> Shipment Progress</h3>
+                        <div class="timeline-steps" id="timelineSteps"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive logistics solutions tailored to meet your shipping needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="img/domestic-shipping.jpg" alt="Domestic Shipping">
+                    <div class="service-content">
+                        <span class="service-tag">Domestic</span>
+                        <h2><i class="fas fa-truck"></i> Domestic Courier</h2>
+                        <p>Fast and reliable delivery services across India with real-time tracking and multiple delivery options.</p>
+                        <ul>
+                            <li>Same-day and next-day delivery options</li>
+                            <li>Express and economy services</li>
+                            <li>Cash on delivery available</li>
+                            <li>Secure handling of sensitive documents</li>
+                            <li>Dedicated account management</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="img/international-shipping.jpg" alt="International Shipping">
+                    <div class="service-content">
+                        <span class="service-tag">International</span>
+                        <h2><i class="fas fa-globe"></i> International Shipping</h2>
+                        <p>Seamless cross-border logistics solutions with customs clearance and end-to-end tracking.</p>
+                        <ul>
+                            <li>Air and sea freight options</li>
+                            <li>Door-to-door international delivery</li>
+                            <li>Customs documentation assistance</li>
+                            <li>Competitive international rates</li>
+                            <li>Dedicated international support</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="img/ecommerce-fulfillment.jpg" alt="E-commerce Fulfillment">
+                    <div class="service-content">
+                        <span class="service-tag">E-commerce</span>
+                        <h2><i class="fas fa-shopping-cart"></i> E-commerce Solutions</h2>
+                        <p>Customized logistics solutions for online sellers with integrated order management.</p>
+                        <ul>
+                            <li>Bulk shipping discounts</li>
+                            <li>Automated order processing</li>
+                            <li>Returns management</li>
+                            <li>Inventory storage options</li>
+                            <li>API integration available</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="img/cargo-services.jpg" alt="Cargo Services">
+                    <div class="service-content">
+                        <span class="service-tag">Commercial</span>
+                        <h2><i class="fas fa-pallet"></i> Cargo & Freight</h2>
+                        <p>Comprehensive cargo solutions for businesses of all sizes with flexible options.</p>
+                        <ul>
+                            <li>Full truckload (FTL) and less-than-truckload (LTL)</li>
+                            <li>Heavy and oversized cargo handling</li>
+                            <li>Temperature-controlled transport</li>
+                            <li>Warehousing and distribution</li>
+                            <li>Dedicated fleet services</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="img/document-courier.jpg" alt="Document Courier">
+                    <div class="service-content">
+                        <span class="service-tag">Priority</span>
+                        <h2><i class="fas fa-envelope"></i> Document Courier</h2>
+                        <p>Secure and timely delivery of important documents with proof of delivery.</p>
+                        <ul>
+                            <li>Confidential document handling</li>
+                            <li>Same-day document delivery</li>
+                            <li>Legal and court document services</li>
+                            <li>Notarized delivery options</li>
+                            <li>24/7 document tracking</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="img/special-services.jpg" alt="Special Services">
+                    <div class="service-content">
+                        <span class="service-tag">Specialized</span>
+                        <h2><i class="fas fa-star"></i> Special Services</h2>
+                        <p>Custom solutions for unique shipping requirements with personalized care.</p>
+                        <ul>
+                            <li>Medical equipment and supplies</li>
+                            <li>Art and fragile items transport</li>
+                            <li>Event and exhibition logistics</li>
+                            <li>High-value item insurance</li>
+                            <li>White-glove delivery services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>We go the extra mile to ensure your shipments arrive safely and on time</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Handling</h3>
+                    <p>Your shipments are handled with utmost care and security throughout the journey.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>On-Time Delivery</h3>
+                    <p>98% on-time delivery rate with real-time tracking and updates.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-rupee-sign"></i>
+                    <h3>Competitive Pricing</h3>
+                    <p>Affordable rates without compromising on service quality.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated customer support available round the clock.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Wide Coverage</h3>
+                    <p>Extensive network covering 500+ cities across India and internationally.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Processing</h3>
+                    <p>Quick pickup and processing with same-day dispatch options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Shipping Process</h2>
+                <p>Simple and efficient process from pickup to delivery</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Schedule Pickup</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Package Handover</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">In-Transit</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Out for Delivery</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Successful Delivery</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Our Company</h2>
+                <p>Delivering excellence in logistics since 2015</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-card">
+                    <h2><i class="fas fa-history"></i> Our History</h2>
+                    <p>Founded in 2015 in Guntur, Andhra Pradesh, SRESHTA International Couriers began as a small local delivery service. Through dedication and customer-focused service, we've grown into a trusted logistics partner serving clients across India and internationally.</p>
+                    <p>Our journey has been marked by continuous innovation, expanding our service offerings and coverage areas to meet the evolving needs of our clients.</p>
+                </div>
+                
+                <div class="about-card">
+                    <h2><i class="fas fa-eye"></i> Our Vision</h2>
+                    <p>To be the most trusted and preferred logistics partner for businesses and individuals, recognized for our reliability, speed, and exceptional customer service.</p>
+                    <p>We aim to continuously expand our network and leverage technology to provide seamless end-to-end logistics solutions.</p>
+                </div>
+                
+                <div class="about-card">
+                    <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+                    <p>To deliver packages with the highest level of care, efficiency, and reliability while maintaining competitive pricing and personalized service.</p>
+                    <p>We commit to investing in our people, technology, and infrastructure to ensure we meet the growing demands of our customers.</p>
+                </div>
+                
+                <div class="about-card">
+                    <h2><i class="fas fa-hand-holding-heart"></i> Our Values</h2>
+                    <ul>
+                        <li>Customer-Centric Approach</li>
+                        <li>Operational Excellence</li>
+                        <li>Integrity and Transparency</li>
+                        <li>Continuous Improvement</li>
+                        <li>Community Responsibility</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="number">8+</div>
+                    <div class="label">Years in Business</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">50+</div>
+                    <div class="label">Cities Served</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">10K+</div>
+                    <div class="label">Monthly Shipments</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">98%</div>
+                    <div class="label">On-Time Delivery Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Leadership Team</h2>
+                <p>The dedicated professionals who make it all possible</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="img/team1.jpg" alt="Founder & CEO">
+                    <h3>K. Rajesh</h3>
+                    <p>Founder & CEO</p>
+                    <p>With over 15 years in logistics, Rajesh founded SRESHTA with a vision to revolutionize local courier services.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="img/team2.jpg" alt="Operations Manager">
+                    <h3>S. Priya</h3>
+                    <p>Operations Manager</p>
+                    <p>Oversees all logistics operations ensuring seamless coordination between our network hubs.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="img/team3.jpg" alt="Customer Service Head">
+                    <h3>M. Kumar</h3>
+                    <p>Customer Service Head</p>
+                    <p>Leads our 24/7 customer support team dedicated to resolving your queries promptly.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="img/team4.jpg" alt="International Logistics Head">
+                    <h3>A. Sharma</h3>
+                    <p>International Logistics Head</p>
+                    <p>Manages our global partnerships and cross-border shipping operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Map Section -->
+    <section class="coverage-section" id="coverage">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Coverage Areas</h2>
+                <p>Extensive network across India and international destinations</p>
+            </div>
+            
+            <div class="map-container">
+                <div id="coverageMap"></div>
+                <div class="map-overlay">
+                    <h3>Coverage Highlights</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> All major Indian cities</li>
+                        <li><i class="fas fa-check"></i> 50+ service locations</li>
+                        <li><i class="fas fa-check"></i> International destinations</li>
+                        <li><i class="fas fa-check"></i> Daily connections</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dimensional Weight Calculator</h2>
+                <p>Calculate the volumetric weight of your package for accurate shipping costs</p>
+            </div>
+            
+            <div class="calculator-card">
+                <form id="weightCalculator">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="length">Length (cm)</label>
+                                <input type="number" class="form-control" id="length" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="width">Width (cm)</label>
+                                <input type="number" class="form-control" id="width" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="height">Height (cm)</label>
+                                <input type="number" class="form-control" id="height" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-calculator me-2"></i> Calculate
+                    </button>
+                </form>
+            </div>
+            
+            <div class="result-card" id="resultCard">
+                <h5><i class="fas fa-weight me-2"></i>Dimensional Weight Result</h5>
+                <div class="d-flex align-items-center mt-3">
+                    <div class="icon-box">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div>
+                        <h3 class="mb-0" id="resultValue">0 kg</h3>
+                        <p class="text-muted mb-0">Formula: (Length × Width × Height) / 5000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prohibited Items Section -->
+    <section class="prohibited-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Prohibited Items</h2>
+                <p>Items we cannot accept for shipping due to safety and legal restrictions</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-pills mb-4 prohibited-tabs" id="prohibitedTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="items-tab" data-bs-toggle="pill" data-bs-target="#items" type="button">
+                                <i class="fas fa-boxes me-2"></i>Items Overview
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="freight-tab" data-bs-toggle="pill" data-bs-target="#freight" type="button">
+                                <i class="fas fa-shipping-fast me-2"></i>Freight Overview
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="dangerous-tab" data-bs-toggle="pill" data-bs-target="#dangerous" type="button">
+                                <i class="fas fa-radiation me-2"></i>Dangerous Goods
+                            </button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content" id="prohibitedTabsContent">
+                        <div class="tab-pane fade show active" id="items" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="prohibited-item p-3 mb-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box">
+                                                <i class="fas fa-money-bill-wave"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Currency</h6>
+                                                <small class="text-muted">Coins, cash, negotiable instruments</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="prohibited-item p-3 mb-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box">
+                                                <i class="fas fa-flask"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Liquids & Semi-liquids</h6>
+                                                <small class="text-muted">Restricted by quantity</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="prohibited-item p-3 mb-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box">
+                                                <i class="fas fa-fire"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Flammable Items</h6>
+                                                <small class="text-muted">Aerosols, lighters, etc.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="prohibited-item p-3 mb-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box">
+                                                <i class="fas fa-pills"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Drugs & Narcotics</h6>
+                                                <small class="text-muted">Without proper authorization</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="prohibited-item p-3 mb-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box">
+                                                <i class="fas fa-gem"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Precious Items</h6>
+                                                <small class="text-muted">Gold, diamonds, etc.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="prohibited-item p-3 mb-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box">
+                                                <i class="fas fa-bolt"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Battery Products</h6>
+                                                <small class="text-muted">Certain electronic devices</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion mt-4" id="moreItemsAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#moreItems">
+                                            <i class="fas fa-ellipsis-h me-2"></i>View More Prohibited Items
+                                        </button>
+                                    </h2>
+                                    <div id="moreItems" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex align-items-center">
+                                                    <i class="fas fa-skull me-3 text-danger"></i>
+                                                    Corpses, cremated or disinterred remains
+                                                </li>
+                                                <li class="list-group-item d-flex align-items-center">
+                                                    <i class="fas fa-snowflake me-3 text-danger"></i>
+                                                    Dry Ice (including that used for packaging)
+                                                </li>
+                                                <li class="list-group-item d-flex align-items-center">
+                                                    <i class="fas fa-dice me-3 text-danger"></i>
+                                                    Gambling Devices
+                                                </li>
+                                                <li class="list-group-item d-flex align-items-center">
+                                                    <i class="fas fa-leaf me-3 text-danger"></i>
+                                                    Live animals and plants
+                                                </li>
+                                                <li class="list-group-item d-flex align-items-center">
+                                                    <i class="fas fa-utensils me-3 text-danger"></i>
+                                                    Foodstuffs/Perishable items
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="freight" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="prohibited-item p-3 mb-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box" style="background-color: rgba(231, 76, 60, 0.1); color: var(--danger-color);">
+                                                <i class="fas fa-bomb"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Explosives</h6>
+                                                <small class="text-muted">All types of explosives</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="prohibited-item p-3 mb-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box" style="background-color: rgba(231, 76, 60, 0.1); color: var(--danger-color);">
+                                                <i class="fas fa-wind"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Gases</h6>
+                                                <small class="text-muted">Flammable, non-flammable, toxic</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="prohibited-item p-3 mb-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box" style="background-color: rgba(231, 76, 60, 0.1); color: var(--danger-color);">
+                                                <i class="fas fa-fire-extinguisher"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Flammable Liquids</h6>
+                                                <small class="text-muted">Gasoline, alcohol, etc.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="prohibited-item p-3 mb-3 border rounded">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box" style="background-color: rgba(231, 76, 60, 0.1); color: var(--danger-color);">
+                                                <i class="fas fa-fire-alt"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Flammable Solids</h6>
+                                                <small class="text-muted">Matches, phosphorus, etc.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="dangerous" role="tabpanel">
+                            <div class="alert alert-danger">
+                                <i class="fas fa-radiation-alt me-2"></i>
+                                <strong>Dangerous Goods</strong> are materials or items with hazardous properties which, if not properly controlled, present a potential hazard to human health and safety, infrastructure, and/or their means of transport.
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card border-danger mb-3">
+                                        <div class="card-header bg-danger text-white">
+                                            <i class="fas fa-biohazard me-2"></i>Toxic & Infectious
+                                        </div>
+                                        <div class="card-body">
+                                            <p>Substances liable either to cause death or serious injury or to harm human health if swallowed, inhaled, or by skin contact.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card border-warning mb-3">
+                                        <div class="card-header bg-warning text-white">
+                                            <i class="fas fa-atom me-2"></i>Radioactive
+                                        </div>
+                                        <div class="card-body">
+                                            <p>Any material containing radionuclides where both the activity concentration and the total activity exceed certain values.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card border-dark mb-3">
+                                        <div class="card-header bg-dark text-white">
+                                            <i class="fas fa-tint me-2"></i>Corrosives
+                                        </div>
+                                        <div class="card-body">
+                                            <p>Substances which, by chemical action, will cause severe damage when in contact with living tissue or other materials.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card border-primary mb-3">
+                                        <div class="card-header bg-primary text-white">
+                                            <i class="fas fa-boxes me-2"></i>Miscellaneous
+                                        </div>
+                                        <div class="card-body">
+                                            <p>Other hazardous materials including environmentally hazardous substances, lithium batteries, etc.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Trusted by businesses and individuals across India</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>SRESHTA Couriers has been our logistics partner for over 3 years. Their reliability and customer service are unmatched in the industry. Our international shipments always arrive on time.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="img/testimonial1.jpg" alt="Customer">
+                        <div class="author-info">
+                            <h4>Rahul Sharma</h4>
+                            <p>CEO, TechSolutions India</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>As an e-commerce business, shipping is critical to our success. SRESHTA's tracking system and delivery network have helped us grow our business with confidence.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="img/testimonial2.jpg" alt="Customer">
+                        <div class="author-info">
+                            <h4>Priya Patel</h4>
+                            <p>Founder, Handmade Treasures</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Their document courier service is fantastic! We send legal documents daily, and SRESHTA has never let us down. The tracking updates give us peace of mind.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="img/testimonial3.jpg" alt="Customer">
+                        <div class="author-info">
+                            <h4>Vikram Joshi</h4>
+                            <p>Partner, Legal Associates</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our services</p>
+            </div>
+            
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            <i class="fas fa-question-circle me-2"></i> How do I track my shipment?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            You can track your shipment using the tracking number provided at the time of booking. Enter the tracking number in the tracking section above to get real-time updates on your package's status and location.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            <i class="fas fa-question-circle me-2"></i> What are your delivery timelines?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Delivery timelines vary based on the service selected and destination. Domestic deliveries typically take 1-5 business days, while international shipments may take 3-10 business days depending on the destination country and customs clearance.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            <i class="fas fa-question-circle me-2"></i> Do you offer cash on delivery (COD) services?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we offer Cash on Delivery (COD) services for domestic shipments within India. COD charges may apply depending on the order value. Please contact our customer service for specific COD terms and conditions.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            <i class="fas fa-question-circle me-2"></i> How do I calculate shipping costs?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Shipping costs are calculated based on either the actual weight or dimensional weight (whichever is greater) of your package, plus the destination. Use our dimensional weight calculator above to estimate your shipping costs, or contact our customer service for a precise quote.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            <i class="fas fa-question-circle me-2"></i> What should I do if my package is damaged or lost?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            In the rare event of damage or loss, please contact our customer service immediately with your tracking number and details of the issue. We have a claims process in place and will work diligently to resolve your concern as quickly as possible.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                            <i class="fas fa-question-circle me-2"></i> Do you provide packaging materials?
+                        </button>
+                    </h2>
+                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we offer a range of packaging materials and services at our locations. We can provide boxes, bubble wrap, packing peanuts, and other materials for an additional fee. For fragile items, we recommend using our professional packing service to ensure safe transit.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for any inquiries or support</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with our customer service representatives</p>
+                    <a href="tel:+919493924742" class="btn btn-primary">+91 94939 24742</a>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>Send us your questions and we'll respond promptly</p>
+                    <a href="mailto:srasthainternationalcouriers@gmail.com" class="btn btn-primary">Send Email</a>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>Chat with us on WhatsApp for quick assistance</p>
+                    <a href="https://wa.me/919493924742" class="btn btn-primary" target="_blank">Start Chat</a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3><i class="fas fa-paper-plane me-2"></i> Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" class="form-control" id="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane me-2"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-shipping-fast"></i> SRESHTA International Couriers</h3>
+                <p>Your trusted partner for fast and reliable logistics solutions across India and internationally.</p>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-link"></i> Quick Links</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#tracking"><i class="fas fa-chevron-right"></i> Tracking</a></li>
+                    <li><a href="#coverage"><i class="fas fa-chevron-right"></i> Coverage Areas</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Contact Info</h3>
+                <ul>
+                    <li><a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" target="_blank"><i class="fas fa-location-dot"></i> 7/4, Sali Pet, Arundelpet, Guntur, Andhra Pradesh 522002</a></li>
+                    <li><a href="tel:+919493924742"><i class="fas fa-phone"></i> +91 94939 24742</a></li>
+                    <li><a href="mailto:srasthainternationalcouriers@gmail.com"><i class="fas fa-envelope"></i> srasthainternationalcouriers@gmail.com</a></li>
+                    <li><a href="https://wa.me/919493924742" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                <ul>
+                    <li><i class="fas fa-calendar-day"></i> Monday - Friday: 9:00 AM - 7:00 PM</li>
+                    <li><i class="fas fa-calendar-day"></i> Saturday: 9:00 AM - 2:00 PM</li>
+                    <li><i class="fas fa-calendar-day"></i> Sunday: Closed</li>
+                    <li><i class="fas fa-truck-fast"></i> 24/7 Online Tracking Available</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; <span id="currentYear"></span> SRESHTA International Couriers. All rights reserved.</p>
+                <div>
+                    <span>Powered by</span>
+                    <a href="https://gantasolutions.com" target="_blank">
+                        <img src="https://gantasolutions.com/gantasolutions.png" alt="Ganta Solutions Logo" style="height: 30px; vertical-align: middle; margin: 0 5px;">
+                    </a>
+                    <span>|</span>
+                    <a href="https://gantasolutions.com" target="_blank">Development Team</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="img/logo-white.png" alt="SRESHTA International Logo">
+            <h3>Quick Links</h3>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="#services"><i class="fas fa-shipping-fast"></i> Our Services</a></li>
+            <li><a href="#tracking"><i class="fas fa-search"></i> Track Shipment</a></li>
+            <li><a href="#coverage"><i class="fas fa-map-marked-alt"></i> Coverage Areas</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        </ul>
+        
+        <div class="sidebar-contact">
+            <h3><i class="fas fa-headset"></i> Contact Details</h3>
+            
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+919493924742">+91 94939 24742</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:srasthainternationalcouriers@gmail.com">srasthainternationalcouriers@gmail.com</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <a href="https://wa.me/919493924742" target="_blank">WhatsApp Chat</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" target="_blank">Our Location</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919493924742" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="auto-loading" class="auto-loading" style="display: none;">
+        <div class="auto-loading-content">
+            <div class="spinner"></div>
+            <p>Loading your tracking information...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAIMQbZZjIb-Z_sNJ4_7XhNz0DtiNnSSfg",
+            authDomain: "shipment-bec8d.firebaseapp.com",
+            projectId: "shipment-bec8d",
+            storageBucket: "shipment-bec8d.appspot.com",
+            messagingSenderId: "83538524138",
+            appId: "1:83538524138:web:c06cf1b00915ea1f606493",
+            measurementId: "G-XHDE3ZMCEY"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        // Status configuration
+        const statusOrder = [
+            "Shipment Created",
+            "Shipped from India",
+            "In Transit",
+            "Reached Destination Country",
+            "In Local Facility",
+            "Out for Delivery",
+            "Delivered"
+        ];
+        
+        const statusIcons = {
+            "Shipment Created": "fas fa-box",
+            "Shipped from India": "fas fa-ship",
+            "In Transit": "fas fa-plane",
+            "Reached Destination Country": "fas fa-flag-checkered",
+            "In Local Facility": "fas fa-warehouse",
+            "Out for Delivery": "fas fa-truck",
+            "Delivered": "fas fa-check-circle"
+        };
+        
+        const statusBadges = {
+            "Shipment Created": "status-created",
+            "Shipped from India": "status-shipped",
+            "In Transit": "status-transit",
+            "Reached Destination Country": "status-arrived",
+            "In Local Facility": "status-arrived",
+            "Out for Delivery": "status-delivery",
+            "Delivered": "status-delivered"
+        };
+        
+        // Courier configuration
+        const courierConfig = [
+            {
+                name: 'FedEx',
+                pattern: /^(\d{12}|\d{15})$/,
+                url: 'https://www.fedex.com/fedextrack/?trknbr='
+            },
+            {
+                name: 'DHL',
+                pattern: /^(\d{10}|\d{11})$/,
+                url: 'https://www.dhl.com/in-en/home/tracking/tracking-express.html?submit=1&tracking-id='
+            },
+            {
+                name: 'UPS',
+                pattern: /^(1Z[0-9A-Z]{16}|T[0-9]{10}|[0-9]{9})$/,
+                url: 'https://www.ups.com/track?loc=en_IN&tracknum='
+            },
+            {
+                name: 'India Post',
+                pattern: /^[A-Z]{2}\d{9}[A-Z]{2}$/,
+                url: 'https://www.indiapost.gov.in/_layouts/15/DOP.Portal.Tracking/TrackConsignment.aspx?LT='
+            },
+            {
+                name: 'Blue Dart',
+                pattern: /^\d{12}$/,
+                url: 'https://www.bluedart.com/tracking'
+            },
+            {
+                name: 'DTDC',
+                pattern: /^DTDC\d{10,12}$/,
+                url: 'https://www.dtdc.in/tracking/tracking_results.asp?Ttype=awb_no&strCnno='
+            }
+        ];
+        
+        // DOM Elements
+        const trackingForm = document.getElementById('trackingForm');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const trackingResult = document.getElementById('trackingResult');
+        const timelineSteps = document.getElementById('timelineSteps');
+        const weightCalculator = document.getElementById('weightCalculator');
+        const resultCard = document.getElementById('resultCard');
+        const resultValue = document.getElementById('resultValue');
+        const contactForm = document.getElementById('contactForm');
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const backToTop = document.getElementById('backToTop');
+        const currentYear = document.getElementById('currentYear');
+        
+        // Set current year in footer
+        currentYear.textContent = new Date().getFullYear();
+        
+        // Mobile navigation toggle
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            navToggle.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Sidebar toggle
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            sidebarToggle.innerHTML = sidebar.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                sidebar.classList.remove('active');
+                sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                    navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Initialize map
+        function initMap() {
+            const map = L.map('coverageMap').setView([20.5937, 78.9629], 5);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add coverage areas (example points)
+            const coveragePoints = [
+                { lat: 17.3850, lng: 78.4867, city: "Hyderabad" },
+                { lat: 13.0827, lng: 80.2707, city: "Chennai" },
+                { lat: 12.9716, lng: 77.5946, city: "Bangalore" },
+                { lat: 19.0760, lng: 72.8777, city: "Mumbai" },
+                { lat: 28.6139, lng: 77.2090, city: "Delhi" },
+                { lat: 22.5726, lng: 88.3639, city: "Kolkata" },
+                { lat: 18.5204, lng: 73.8567, city: "Pune" },
+                { lat: 26.9124, lng: 75.7873, city: "Jaipur" },
+                { lat: 23.0225, lng: 72.5714, city: "Ahmedabad" },
+                { lat: 15.2993, lng: 74.1240, city: "Goa" },
+                { lat: 9.9312, lng: 76.2673, city: "Kochi" },
+                { lat: 8.5241, lng: 76.9366, city: "Trivandrum" },
+                { lat: 11.0168, lng: 76.9558, city: "Coimbatore" },
+                { lat: 10.7905, lng: 78.7047, city: "Trichy" },
+                { lat: 16.5062, lng: 80.6480, city: "Vijayawada" },
+                { lat: 17.6868, lng: 83.2185, city: "Visakhapatnam" },
+                { lat: 16.3067, lng: 80.4365, city: "Guntur" }
+            ];
+            
+            // Add markers for each coverage point
+            coveragePoints.forEach(point => {
+                L.marker([point.lat, point.lng])
+                    .addTo(map)
+                    .bindPopup(`<b>${point.city}</b><br>Service available`);
+            });
+            
+            // Add a coverage area polygon (example)
+            const coverageArea = L.polygon([
+                [8.0, 68.0],
+                [8.0, 97.0],
+                [35.0, 97.0],
+                [35.0, 68.0]
+            ], {
+                color: '#0056b3',
+                fillColor: '#0056b3',
+                fillOpacity: 0.1,
+                weight: 2
+            }).addTo(map);
+        }
+        
+        // Initialize map when page loads
+        window.addEventListener('load', initMap);
+        
+        // Initialize testimonial slider
+        $(document).ready(function(){
+            $('.testimonial-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                arrows: false
+            });
+        });
+        
+        // Helper functions
+        function showLoading() {
+            loadingSpinner.style.display = 'block';
+            errorMessage.style.display = 'none';
+            trackingResult.style.display = 'none';
+        }
+        
+        function hideLoading() {
+            loadingSpinner.style.display = 'none';
+        }
+        
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.style.display = 'flex';
+            trackingResult.style.display = 'none';
+        }
+        
+        function formatDate(date) {
+            if (!date) return '-';
+            try {
+                const options = {
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric',
+                    hour: '2-digit', 
+                    minute: '2-digit'
+                };
+                return date.toLocaleDateString('en-US', options);
+            } catch (e) {
+                console.error("Date formatting error:", e);
+                return '-';
+            }
+        }
+        
+        function detectCourier(awbNumber) {
+            if (!awbNumber) return null;
+            const cleanAwb = awbNumber.replace(/[ -]/g, '');
+            return courierConfig.find(courier => courier.pattern.test(cleanAwb)) || null;
+        }
+        
+        function redirectToCourierTracking(awbNumber) {
+            const courier = detectCourier(awbNumber);
+            if (courier) {
+                window.open(courier.url + encodeURIComponent(awbNumber), '_blank');
+            } else {
+                window.open(`https://www.ship24.com/search?q=${encodeURIComponent(awbNumber)}`, '_blank');
+            }
+        }
+        
+        function createTimelineStep(status, isCompleted, isActive, historyItem) {
+            const step = document.createElement('div');
+            step.className = `timeline-step ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}`;
+            
+            // Status title with icon
+            const statusTitle = document.createElement('h4');
+            const statusIcon = document.createElement('i');
+            statusIcon.className = statusIcons[status] || 'fas fa-circle';
+            statusTitle.appendChild(statusIcon);
+            statusTitle.appendChild(document.createTextNode(' ' + status));
+            step.appendChild(statusTitle);
+            
+            // Status description
+            const statusDesc = document.createElement('p');
+            
+            if (isCompleted && historyItem) {
+                statusDesc.textContent = historyItem.notes || 'Status updated';
+                
+                if (historyItem.timestamp) {
+                    try {
+                        const timestamp = historyItem.timestamp.toDate 
+                            ? historyItem.timestamp.toDate() 
+                            : new Date(historyItem.timestamp);
+                        const dateElem = document.createElement('span');
+                        dateElem.className = 'timeline-date';
+                        dateElem.innerHTML = `<i class="far fa-clock"></i> ${formatDate(timestamp)}`;
+                        step.appendChild(dateElem);
+                    } catch (e) {
+                        console.error("Error processing timestamp:", e);
+                    }
+                }
+            } else if (isActive) {
+                statusDesc.textContent = 'Current status';
+            } else {
+                statusDesc.textContent = 'Pending';
+            }
+            
+            step.appendChild(statusDesc);
+            return step;
+        }
+        
+        function displayShipmentDetails(shipment = {}) {
+            // Basic shipment info
+            document.getElementById('resultCustomerName').textContent = shipment.customerName || '-';
+            document.getElementById('resultTrackingNumber').textContent = shipment.trackingNumber || '-';
+            
+            // Status with badge
+            const status = shipment.status || 'Shipment Created';
+            const badgeClass = statusBadges[status] || 'status-created';
+            document.getElementById('resultStatus').className = 'value';
+            document.getElementById('resultStatus').innerHTML = `${status} <span class="status-badge ${badgeClass}">${status}</span>`;
+            
+            // Other details
+            document.getElementById('resultOrigin').textContent = shipment.origin || '-';
+            document.getElementById('resultDestination').textContent = shipment.destination || '-';
+            document.getElementById('resultWeight').textContent = shipment.weight ? `${shipment.weight} kg` : '-';
+            
+            // Last updated time
+            let updatedAt = shipment.updatedAt || shipment.history?.[shipment.history.length - 1]?.timestamp;
+            let updatedAtText = '-';
+            if (updatedAt) {
+                try {
+                    updatedAtText = formatDate(updatedAt.toDate ? updatedAt.toDate() : new Date(updatedAt));
+                } catch (e) {
+                    console.error("Error formatting update date:", e);
+                }
+            }
+            document.getElementById('resultUpdated').textContent = updatedAtText;
+            
+            // Forwarding AWB
+            const forwardingAWBElement = document.getElementById('resultForwardingAWB');
+            if (shipment.awbNumber) {
+                const awbNumber = shipment.awbNumber;
+                const courier = detectCourier(awbNumber) || shipment.forwardingCourier;
+                const displayText = courier 
+                    ? `${typeof courier === 'string' ? courier : courier.name}: ${awbNumber}`
+                    : `AWB: ${awbNumber}`;
+                
+                forwardingAWBElement.innerHTML = `
+                    <a href="#" 
+                       onclick="redirectToCourierTracking('${awbNumber.replace(/'/g, "\\'")}'); return false;"
+                       style="color: #0066cc; text-decoration: underline; cursor: pointer;"
+                       title="${courier ? `Track on ${typeof courier === 'string' ? courier : courier.name}` : 'Track this AWB'}">
+                       ${displayText} <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i>
+                    </a>`;
+            } else {
+                forwardingAWBElement.textContent = 'Not assigned';
+            }
+            
+            // Timeline display
+            timelineSteps.innerHTML = '';
+            
+            let currentStatusIndex = statusOrder.indexOf(status);
+            if (currentStatusIndex === -1) {
+                console.warn("Status not found in statusOrder:", status);
+                currentStatusIndex = 0;
+            }
+            
+            const history = Array.isArray(shipment.history) ? shipment.history : [];
+            
+            statusOrder.forEach((status, idx) => {
+                const isCompleted = idx < currentStatusIndex;
+                const isActive = idx === currentStatusIndex;
+                const historyItem = history.find(item => item && item.status === status);
+                
+                timelineSteps.appendChild(
+                    createTimelineStep(status, isCompleted, isActive, historyItem)
+                );
+            });
+            
+            // Animate timeline steps
+            setTimeout(() => {
+                const steps = document.querySelectorAll('.timeline-step');
+                steps.forEach((step, index) => {
+                    setTimeout(() => {
+                        step.classList.add('animate');
+                    }, index * 200);
+                });
+            }, 100);
+            
+            errorMessage.style.display = 'none';
+            trackingResult.style.display = 'block';
+        }
+        
+        // Form submit handler
+        trackingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const trackingNumber = document.getElementById('trackingNumber').value.trim().toUpperCase();
+            
+            // Validation
+            if (!trackingNumber.startsWith('SIC') || trackingNumber.length !== 11) {
+                showError('Please enter a valid tracking number starting with SIC followed by 8 digits (e.g., SIC00000001).');
+                return;
+            }
+            
+            try {
+                showLoading();
+                const docRef = db.collection('shipments').doc(trackingNumber);
+                const docSnap = await docRef.get();
+                
+                if (docSnap.exists) {
+                    displayShipmentDetails(docSnap.data());
+                } else {
+                    showError('No shipment found with this tracking number. Please check and try again.');
+                }
+            } catch (err) {
+                console.error("Tracking error:", err);
+                showError('An error occurred while fetching shipment details. Please try again later.');
+            } finally {
+                hideLoading();
+            }
+        });
+        
+        // Weight calculator form handler
+        weightCalculator.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const height = parseFloat(document.getElementById('height').value);
+            
+            if (isNaN(length) || isNaN(width) || isNaN(height)) {
+                alert('Please enter valid dimensions');
+                return;
+            }
+            
+            const dimensionalWeight = (length * width * height) / 5000;
+            resultValue.textContent = dimensionalWeight.toFixed(2) + ' kg';
+            resultCard.style.display = 'block';
+        });
+        
+        // Contact form handler
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Here you would typically send the form data to your server
+            // For demo purposes, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been received. We'll contact you soon at ${email}.`);
+            contactForm.reset();
+        });
+        
+        // Auto-tracking from URL parameter
+        function checkUrlTrackingRef() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const trackingRef = urlParams.get('ref');
+            
+            if (trackingRef) {
+                document.getElementById('trackingNumber').value = trackingRef.toUpperCase();
+                autoTrackPackage(trackingRef);
+            }
+        }
+        
+        async function autoTrackPackage(trackingNumber) {
+            const autoLoading = document.getElementById('auto-loading');
+            let isLoading = true;
+            
+            let spinnerTimeout = setTimeout(() => { 
+                if (isLoading && autoLoading) autoLoading.style.display = 'flex'; 
+            }, 500);
+            
+            let requestTimeout = setTimeout(() => {
+                if (isLoading) {
+                    isLoading = false;
+                    if (autoLoading) autoLoading.style.display = 'none';
+                    showError('Tracking request timed out. Please try again.');
+                }
+            }, 15000);
+            
+            try {
+                trackingNumber = trackingNumber.trim().toUpperCase();
+                
+                if (!trackingNumber.startsWith('SIC') || trackingNumber.length !== 11) {
+                    showError('Invalid tracking number format');
+                    return;
+                }
+                
+                showLoading();
+                const docRef = db.collection('shipments').doc(trackingNumber);
+                const docSnap = await docRef.get();
+                
+                if (docSnap.exists) {
+                    displayShipmentDetails(docSnap.data());
+                } else {
+                    showError('No shipment found with this tracking number');
+                }
+            } catch (error) {
+                console.error("Auto-track error:", error);
+                showError('An error occurred while fetching shipment details');
+            } finally {
+                clearTimeout(spinnerTimeout);
+                clearTimeout(requestTimeout);
+                isLoading = false;
+                if (autoLoading) autoLoading.style.display = 'none';
+                hideLoading();
+            }
+        }
+        
+        // Initialize the page
+        checkUrlTrackingRef();
+        window.redirectToCourierTracking = redirectToCourierTracking;
+        
+        // Add animation to elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card, .feature-card, .about-card, .stat-card, .team-member');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on page load
+    </script>
+</body>
+</html>
