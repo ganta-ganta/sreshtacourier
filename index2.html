@@ -1,0 +1,2861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRESHTA International Couriers - Global Shipping Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --dark-color: #1f2937;
+            --light-color: #f8fafc;
+            --white: #ffffff;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            
+            --spacing-1: 0.25rem;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-5: 1.25rem;
+            --spacing-6: 1.5rem;
+            --spacing-8: 2rem;
+            --spacing-10: 2.5rem;
+            --spacing-12: 3rem;
+            --spacing-16: 4rem;
+            --spacing-20: 5rem;
+            
+            --border-radius: 0.5rem;
+            --border-radius-lg: 1rem;
+            --border-radius-xl: 1.5rem;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-4);
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        .d-flex { display: flex; }
+        .d-grid { display: grid; }
+        .d-none { display: none; }
+        .d-block { display: block; }
+
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .align-center { align-items: center; }
+
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+
+        .mt-auto { margin-top: auto; }
+        .mb-auto { margin-bottom: auto; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-3) var(--spacing-6);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-4) var(--spacing-6);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-8);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--gray-700);
+            padding: var(--spacing-2) var(--spacing-3);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+            background: var(--gray-100);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .nav-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--gray-700);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.9;
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a"><stop offset="0" stop-color="%23ffffff" stop-opacity=".1"/><stop offset="1" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="180" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="600" cy="700" r="200" fill="url(%23a)"/></svg>') no-repeat center;
+            background-size: cover;
+        }
+
+        .world-map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500"><path d="M150 200 Q 300 100 450 200 T 750 200 Q 850 150 950 200" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" stroke-dasharray="5,5"/><path d="M100 300 Q 250 250 400 300 T 700 300 Q 800 280 900 300" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" stroke-dasharray="5,5"/><path d="M200 150 Q 350 100 500 150 T 800 150" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" stroke-dasharray="5,5"/></svg>') no-repeat center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .flight-path {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: movePath 8s linear infinite;
+        }
+
+        .flight-path.path-1 {
+            top: 25%;
+            left: 0;
+            width: 60%;
+            animation-delay: 0s;
+        }
+
+        .flight-path.path-2 {
+            top: 45%;
+            right: 0;
+            width: 70%;
+            animation-delay: 2s;
+        }
+
+        .flight-path.path-3 {
+            top: 65%;
+            left: 10%;
+            width: 50%;
+            animation-delay: 4s;
+        }
+
+        .plane {
+            position: absolute;
+            color: var(--white);
+            font-size: 20px;
+            animation: flyPlane 8s linear infinite;
+        }
+
+        .plane.plane-1 {
+            top: 25%;
+            left: -50px;
+            animation-delay: 0s;
+        }
+
+        .plane.plane-2 {
+            top: 45%;
+            right: -50px;
+            animation-delay: 2s;
+            transform: scaleX(-1);
+        }
+
+        .plane.plane-3 {
+            top: 65%;
+            left: -50px;
+            animation-delay: 4s;
+        }
+
+        @keyframes movePath {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
+        }
+
+        @keyframes flyPlane {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 100px)); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: var(--spacing-6);
+            line-height: 1.1;
+        }
+
+        .title-line {
+            display: block;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .title-line:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-12);
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-12);
+            margin-bottom: var(--spacing-12);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: var(--font-size-4xl);
+            font-weight: 800;
+            display: block;
+            margin-bottom: var(--spacing-2);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-6);
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--spacing-8);
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: var(--font-size-xl);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--spacing-20) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-16);
+        }
+
+        .section-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .section-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--gray-50);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-8);
+            margin-bottom: var(--spacing-16);
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: var(--spacing-8);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-6);
+            color: var(--white);
+            font-size: var(--font-size-2xl);
+        }
+
+        .about-card h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .about-card p {
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .values-section {
+            text-align: center;
+        }
+
+        .values-section h3 {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-6);
+        }
+
+        .value-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-3);
+            padding: var(--spacing-6);
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .value-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .value-item i {
+            font-size: var(--font-size-2xl);
+            color: var(--primary-color);
+        }
+
+        .value-item span {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-8);
+            margin-bottom: var(--spacing-16);
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-icon {
+            position: absolute;
+            top: var(--spacing-6);
+            right: var(--spacing-6);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: var(--font-size-xl);
+        }
+
+        .service-tag {
+            position: absolute;
+            top: var(--spacing-6);
+            left: var(--spacing-6);
+            background: var(--accent-color);
+            color: var(--white);
+            padding: var(--spacing-1) var(--spacing-3);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+        }
+
+        .service-card h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-4);
+            padding: var(--spacing-8) var(--spacing-6) 0;
+        }
+
+        .service-card p {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-6);
+            padding: 0 var(--spacing-6);
+        }
+
+        .service-features {
+            padding: 0 var(--spacing-6) var(--spacing-8);
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            margin-bottom: var(--spacing-3);
+            color: var(--gray-700);
+        }
+
+        .service-features i {
+            color: var(--success-color);
+            font-size: var(--font-size-sm);
+        }
+
+        .process-section {
+            text-align: center;
+            margin-top: var(--spacing-16);
+        }
+
+        .process-section h3 {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-12);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-8);
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-4);
+            max-width: 150px;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -50px;
+            width: 40px;
+            height: 2px;
+            background: var(--gray-300);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+        }
+
+        .step-content h4 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .step-content p {
+            font-size: var(--font-size-sm);
+            color: var(--gray-600);
+        }
+
+        /* Tracking Section */
+        .tracking {
+            background: var(--gray-50);
+        }
+
+        .tracking-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tracking-form-card {
+            background: var(--white);
+            padding: var(--spacing-8);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .tracking-form {
+            margin-bottom: var(--spacing-6);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-6);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: var(--spacing-4);
+            color: var(--gray-500);
+            z-index: 1;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) var(--spacing-12);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            transition: var(--transition);
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: var(--spacing-8);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--gray-300);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--spacing-4);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            display: none;
+            align-items: center;
+            gap: var(--spacing-3);
+            padding: var(--spacing-4);
+            background: var(--error-color);
+            color: var(--white);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-6);
+        }
+
+        .tracking-result {
+            display: none;
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .shipment-info {
+            padding: var(--spacing-8);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .shipment-info h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-6);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-4);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-3);
+            background: var(--gray-50);
+            border-radius: var(--border-radius);
+        }
+
+        .info-item .label {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .info-item .value {
+            color: var(--gray-900);
+            font-weight: 500;
+        }
+
+        .timeline {
+            padding: var(--spacing-8);
+        }
+
+        .timeline h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-6);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+
+        .timeline-steps {
+            position: relative;
+        }
+
+        .timeline-step {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-6);
+            position: relative;
+        }
+
+        .timeline-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            width: 2px;
+            height: calc(100% + var(--spacing-6));
+            background: var(--gray-300);
+        }
+
+        .timeline-step.completed::after {
+            background: var(--success-color);
+        }
+
+        .timeline-step-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--gray-300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: var(--font-size-sm);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-step.completed .timeline-step-icon {
+            background: var(--success-color);
+        }
+
+        .timeline-step.active .timeline-step-icon {
+            background: var(--primary-color);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+            }
+        }
+
+        .timeline-step-content h4 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .timeline-step-content p {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .timeline-date {
+            font-size: var(--font-size-sm);
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+
+        /* Calculator Section */
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-8);
+        }
+
+        .calculator-card,
+        .prohibited-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            padding: var(--spacing-8);
+        }
+
+        .calculator-card h3,
+        .prohibited-card h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-6);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+
+        .calculator-form .form-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-6);
+        }
+
+        .calculator-form .form-group {
+            margin-bottom: 0;
+        }
+
+        .calculator-form input {
+            width: 100%;
+            padding: var(--spacing-4);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            transition: var(--transition);
+        }
+
+        .calculator-form input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .result-card {
+            display: none;
+            margin-top: var(--spacing-6);
+            padding: var(--spacing-6);
+            background: var(--gray-50);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--success-color);
+        }
+
+        .result-card.show {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .result-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--success-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: var(--font-size-xl);
+        }
+
+        .result-content h4 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .result-value {
+            font-size: var(--font-size-3xl);
+            font-weight: 800;
+            color: var(--success-color);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .result-formula {
+            font-size: var(--font-size-sm);
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        .prohibited-tabs {
+            margin-top: var(--spacing-6);
+        }
+
+        .tab-nav {
+            display: flex;
+            gap: var(--spacing-2);
+            margin-bottom: var(--spacing-6);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .tab-btn {
+            padding: var(--spacing-3) var(--spacing-6);
+            background: none;
+            border: none;
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--gray-600);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        .prohibited-grid {
+            display: grid;
+            gap: var(--spacing-4);
+        }
+
+        .prohibited-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            padding: var(--spacing-4);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .prohibited-item:hover {
+            border-color: var(--primary-color);
+            background: var(--gray-50);
+        }
+
+        .prohibited-item.danger {
+            border-color: var(--error-color);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .prohibited-item i {
+            font-size: var(--font-size-xl);
+            color: var(--warning-color);
+            width: 30px;
+            text-align: center;
+        }
+
+        .prohibited-item.danger i {
+            color: var(--error-color);
+        }
+
+        .prohibited-item h5 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-1);
+        }
+
+        .prohibited-item p {
+            font-size: var(--font-size-sm);
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--gray-50);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-12);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-6);
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: var(--spacing-8);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-4);
+            color: var(--white);
+            font-size: var(--font-size-xl);
+        }
+
+        .contact-card h3 {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .contact-card p {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-6);
+        }
+
+        .contact-form-container {
+            background: var(--white);
+            padding: var(--spacing-8);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-6);
+        }
+
+        .contact-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-4);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: var(--spacing-6);
+        }
+
+        .contact-form label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: var(--spacing-4);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-base);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .business-hours {
+            margin-top: var(--spacing-8);
+            padding-top: var(--spacing-8);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .business-hours h4 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-4);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+
+        .hours-grid {
+            display: grid;
+            gap: var(--spacing-3);
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-3);
+            background: var(--gray-50);
+            border-radius: var(--border-radius);
+        }
+
+        .hours-item span:first-child {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .hours-item span:last-child {
+            color: var(--gray-600);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-300);
+            padding: var(--spacing-16) 0 var(--spacing-8);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-12);
+            margin-bottom: var(--spacing-12);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .footer-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .footer-logo h3 {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .footer-section p {
+            line-height: 1.7;
+            margin-bottom: var(--spacing-6);
+        }
+
+        .footer-section h4 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: var(--spacing-6);
+        }
+
+        .footer-section ul {
+            display: grid;
+            gap: var(--spacing-3);
+        }
+
+        .footer-section ul a {
+            color: var(--gray-400);
+            transition: var(--transition);
+        }
+
+        .footer-section ul a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-4);
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--gray-800);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .contact-info-footer {
+            display: grid;
+            gap: var(--spacing-3);
+        }
+
+        .contact-info-footer p {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            margin: 0;
+            color: var(--gray-400);
+        }
+
+        .contact-info-footer i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+
+        .footer-bottom {
+            padding-top: var(--spacing-8);
+            border-top: 1px solid var(--gray-800);
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-4);
+        }
+
+        .powered-by {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            color: var(--gray-500);
+        }
+
+        .powered-by img {
+            height: 30px;
+            width: auto;
+        }
+
+        /* Floating Elements */
+        .whatsapp-float {
+            position: fixed;
+            bottom: var(--spacing-6);
+            right: var(--spacing-6);
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: var(--font-size-2xl);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: var(--spacing-6);
+            left: var(--spacing-6);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .calculator-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--spacing-8);
+            }
+            
+            .hero-stats {
+                gap: var(--spacing-8);
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .process-step:not(:last-child)::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+                padding: var(--spacing-6) 0;
+                gap: var(--spacing-4);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active .bar:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .nav-toggle.active .bar:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: var(--spacing-6);
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculator-form .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .result-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .prohibited-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .whatsapp-float {
+                bottom: var(--spacing-4);
+                right: var(--spacing-4);
+                width: 50px;
+                height: 50px;
+                font-size: var(--font-size-xl);
+            }
+            
+            .back-to-top {
+                bottom: var(--spacing-4);
+                left: var(--spacing-4);
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--spacing-3);
+            }
+            
+            section {
+                padding: var(--spacing-16) 0;
+            }
+            
+            .section-title {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .hero-title {
+                font-size: var(--font-size-4xl);
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tab-nav {
+                flex-direction: column;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navbar,
+            .whatsapp-float,
+            .back-to-top,
+            .hero-background {
+                display: none;
+            }
+            
+            .hero {
+                height: auto;
+                min-height: auto;
+                padding: var(--spacing-8) 0;
+            }
+            
+            section {
+                padding: var(--spacing-8) 0;
+                page-break-inside: avoid;
+            }
+            
+            .service-card,
+            .about-card,
+            .contact-card {
+                box-shadow: none;
+                border: 1px solid var(--gray-300);
+            }
+            
+            .btn {
+                border: 1px solid currentColor;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --gray-100: #ffffff;
+                --gray-200: #e5e5e5;
+                --gray-300: #cccccc;
+                --gray-400: #999999;
+                --gray-500: #666666;
+                --gray-600: #333333;
+                --gray-700: #1a1a1a;
+                --gray-800: #000000;
+                --gray-900: #000000;
+            }
+            
+            .btn-outline,
+            .nav-link,
+            .service-card,
+            .about-card,
+            .contact-card {
+                border-width: 2px;
+            }
+        }
+
+        /* Focus styles for better accessibility */
+        .btn:focus-visible,
+        .nav-link:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="SRESHTA Logo">
+                <span>SRESHTA International</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#tracking" class="nav-link">Track</a></li>
+                <li class="nav-item"><a href="#calculator" class="nav-link">Calculator</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="world-map">
+                <div class="flight-path path-1"></div>
+                <div class="flight-path path-2"></div>
+                <div class="flight-path path-3"></div>
+                <div class="plane plane-1"><i class="fas fa-plane"></i></div>
+                <div class="plane plane-2"><i class="fas fa-plane"></i></div>
+                <div class="plane plane-3"><i class="fas fa-plane"></i></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">
+                    <span class="title-line">Global Shipping</span>
+                    <span class="title-line">Made Simple</span>
+                </h1>
+                <p class="hero-subtitle">Fast, reliable, and secure courier services connecting India to the world</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="8">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Cities Served</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#tracking" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Track Shipment
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-shipping-fast"></i> Our Services
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About SRESHTA International</h2>
+                <p class="section-subtitle">Your trusted logistics partner since 2015</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3>Our Journey</h3>
+                        <p>Founded in Guntur, Andhra Pradesh, we've grown from a local delivery service to a trusted international logistics partner, serving thousands of customers across India and globally.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <p>To be the most trusted logistics partner, recognized for reliability, speed, and exceptional customer service while continuously expanding our global network.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <p>Delivering packages with the highest level of care, efficiency, and reliability while maintaining competitive pricing and personalized service for every customer.</p>
+                    </div>
+                </div>
+                
+                <div class="values-section">
+                    <h3>Our Core Values</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Customer First</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-medal"></i>
+                            <span>Excellence</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-handshake"></i>
+                            <span>Integrity</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Innovation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive logistics solutions for all your shipping needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="service-tag">Domestic</div>
+                    <h3>Domestic Courier</h3>
+                    <p>Fast and reliable delivery across India with real-time tracking</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Same-day delivery</li>
+                        <li><i class="fas fa-check"></i> Cash on delivery</li>
+                        <li><i class="fas fa-check"></i> Express services</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="service-tag">International</div>
+                    <h3>International Shipping</h3>
+                    <p>Seamless cross-border logistics with customs clearance</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Air & sea freight</li>
+                        <li><i class="fas fa-check"></i> Door-to-door delivery</li>
+                        <li><i class="fas fa-check"></i> Customs assistance</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="service-tag">E-commerce</div>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Customized logistics for online sellers with API integration</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Bulk discounts</li>
+                        <li><i class="fas fa-check"></i> Returns management</li>
+                        <li><i class="fas fa-check"></i> Inventory storage</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pallet"></i>
+                    </div>
+                    <div class="service-tag">Commercial</div>
+                    <h3>Cargo & Freight</h3>
+                    <p>Comprehensive cargo solutions for businesses of all sizes</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> FTL & LTL services</li>
+                        <li><i class="fas fa-check"></i> Heavy cargo handling</li>
+                        <li><i class="fas fa-check"></i> Warehousing</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="service-tag">Priority</div>
+                    <h3>Document Courier</h3>
+                    <p>Secure delivery of important documents with proof</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Confidential handling</li>
+                        <li><i class="fas fa-check"></i> Legal documents</li>
+                        <li><i class="fas fa-check"></i> 24/7 tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="service-tag">Specialized</div>
+                    <h3>Special Services</h3>
+                    <p>Custom solutions for unique shipping requirements</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Medical equipment</li>
+                        <li><i class="fas fa-check"></i> Fragile items</li>
+                        <li><i class="fas fa-check"></i> White-glove delivery</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="process-section">
+                <h3>Simple Shipping Process</h3>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Schedule Pickup</h4>
+                            <p>Book online or call us</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Package Handover</h4>
+                            <p>Our team collects your package</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>In Transit</h4>
+                            <p>Real-time tracking available</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Out for Delivery</h4>
+                            <p>Final mile delivery</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Delivered</h4>
+                            <p>Successful delivery confirmation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section id="tracking" class="tracking">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Track Your Shipment</h2>
+                <p class="section-subtitle">Real-time tracking for complete peace of mind</p>
+            </div>
+            
+            <div class="tracking-container">
+                <div class="tracking-form-card">
+                    <form id="trackingForm" class="tracking-form">
+                        <div class="form-group">
+                            <label for="trackingNumber">Enter Tracking Number</label>
+                            <div class="input-group">
+                                <i class="fas fa-barcode"></i>
+                                <input type="text" id="trackingNumber" placeholder="SIC00000001" required>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search"></i> Track
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div class="loading-spinner" id="loadingSpinner">
+                        <div class="spinner"></div>
+                        <p>Fetching shipment details...</p>
+                    </div>
+                    
+                    <div class="error-message" id="errorMessage">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="errorText"></span>
+                    </div>
+                </div>
+                
+                <div class="tracking-result" id="trackingResult">
+                    <div class="shipment-info">
+                        <h3><i class="fas fa-box-open"></i> Shipment Details</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Status:</span>
+                                <span id="resultStatus" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Customer:</span>
+                                <span id="resultCustomerName" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Tracking Number:</span>
+                                <span id="resultTrackingNumber" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Origin:</span>
+                                <span id="resultOrigin" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Destination:</span>
+                                <span id="resultDestination" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Weight:</span>
+                                <span id="resultWeight" class="value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <h3><i class="fas fa-map-marked-alt"></i> Shipment Progress</h3>
+                        <div class="timeline-steps" id="timelineSteps"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="calculator">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Shipping Calculator</h2>
+                <p class="section-subtitle">Calculate dimensional weight and check shipping guidelines</p>
+            </div>
+            
+            <div class="calculator-grid">
+                <div class="calculator-card">
+                    <h3><i class="fas fa-calculator"></i> Dimensional Weight Calculator</h3>
+                    <form id="weightCalculator" class="calculator-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="length">Length (cm)</label>
+                                <input type="number" id="length" placeholder="Enter length" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="width">Width (cm)</label>
+                                <input type="number" id="width" placeholder="Enter width" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="height">Height (cm)</label>
+                                <input type="number" id="height" placeholder="Enter height" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-calculator"></i> Calculate Weight
+                        </button>
+                    </form>
+                    
+                    <div class="result-card" id="resultCard">
+                        <div class="result-icon">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <div class="result-content">
+                            <h4>Dimensional Weight</h4>
+                            <div class="result-value" id="resultValue">0 kg</div>
+                            <p class="result-formula">Formula: (L × W × H) ÷ 5000</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="prohibited-card">
+                    <h3><i class="fas fa-ban"></i> Prohibited Items</h3>
+                    <div class="prohibited-tabs">
+                        <div class="tab-nav">
+                            <button class="tab-btn active" data-tab="general">General</button>
+                            <button class="tab-btn" data-tab="dangerous">Dangerous</button>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="general">
+                                <div class="prohibited-grid">
+                                    <div class="prohibited-item">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <div>
+                                            <h5>Currency & Cash</h5>
+                                            <p>Coins, cash, negotiable instruments</p>
+                                        </div>
+                                    </div>
+                                    <div class="prohibited-item">
+                                        <i class="fas fa-flask"></i>
+                                        <div>
+                                            <h5>Liquids</h5>
+                                            <p>Restricted by quantity and type</p>
+                                        </div>
+                                    </div>
+                                    <div class="prohibited-item">
+                                        <i class="fas fa-pills"></i>
+                                        <div>
+                                            <h5>Drugs & Narcotics</h5>
+                                            <p>Without proper authorization</p>
+                                        </div>
+                                    </div>
+                                    <div class="prohibited-item">
+                                        <i class="fas fa-gem"></i>
+                                        <div>
+                                            <h5>Precious Items</h5>
+                                            <p>Gold, diamonds, jewelry</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane" id="dangerous">
+                                <div class="prohibited-grid">
+                                    <div class="prohibited-item danger">
+                                        <i class="fas fa-bomb"></i>
+                                        <div>
+                                            <h5>Explosives</h5>
+                                            <p>All types of explosive materials</p>
+                                        </div>
+                                    </div>
+                                    <div class="prohibited-item danger">
+                                        <i class="fas fa-fire"></i>
+                                        <div>
+                                            <h5>Flammable Items</h5>
+                                            <p>Gasoline, alcohol, aerosols</p>
+                                        </div>
+                                    </div>
+                                    <div class="prohibited-item danger">
+                                        <i class="fas fa-radiation-alt"></i>
+                                        <div>
+                                            <h5>Radioactive</h5>
+                                            <p>Materials containing radionuclides</p>
+                                        </div>
+                                    </div>
+                                    <div class="prohibited-item danger">
+                                        <i class="fas fa-biohazard"></i>
+                                        <div>
+                                            <h5>Toxic Substances</h5>
+                                            <p>Harmful chemicals and biologicals</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">We're here to help with all your shipping needs</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Visit Us</h3>
+                        <p>7/4, Sali Pet, Arundelpet<br>Guntur, Andhra Pradesh 522002</p>
+                        <a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" target="_blank" class="btn btn-outline">
+                            <i class="fas fa-directions"></i> Get Directions
+                        </a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Call Us</h3>
+                        <p>Available 24/7 for your convenience</p>
+                        <a href="tel:+919493924742" class="btn btn-outline">
+                            <i class="fas fa-phone"></i> +91 94939 24742
+                        </a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <p>Send us your queries anytime</p>
+                        <a href="mailto:srasthainternationalcouriers@gmail.com" class="btn btn-outline">
+                            <i class="fas fa-envelope"></i> Send Email
+                        </a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>WhatsApp</h3>
+                        <p>Quick support via WhatsApp</p>
+                        <a href="https://wa.me/919493924742" target="_blank" class="btn btn-outline">
+                            <i class="fab fa-whatsapp"></i> Chat Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="tracking">Tracking Inquiry</option>
+                                <option value="shipping">Shipping Quote</option>
+                                <option value="complaint">Complaint</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                    
+                    <div class="business-hours">
+                        <h4><i class="fas fa-clock"></i> Business Hours</h4>
+                        <div class="hours-grid">
+                            <div class="hours-item">
+                                <span>Monday - Friday</span>
+                                <span>9:00 AM - 7:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span>Saturday</span>
+                                <span>9:00 AM - 2:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span>Sunday</span>
+                                <span>Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://images.pexels.com/photos/906494/pexels-photo-906494.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop" alt="SRESHTA Logo">
+                        <h3>SRESHTA International</h3>
+                    </div>
+                    <p>Your trusted partner for fast and reliable logistics solutions across India and internationally.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#tracking">Track Package</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Domestic Courier</a></li>
+                        <li><a href="#services">International Shipping</a></li>
+                        <li><a href="#services">E-commerce Solutions</a></li>
+                        <li><a href="#services">Cargo Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info-footer">
+                        <p><i class="fas fa-map-marker-alt"></i> 7/4, Sali Pet, Arundelpet, Guntur, Andhra Pradesh 522002</p>
+                        <p><i class="fas fa-phone"></i> +91 94939 24742</p>
+                        <p><i class="fas fa-envelope"></i> srasthainternationalcouriers@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 SRESHTA International Couriers. All rights reserved.</p>
+                    <div class="powered-by">
+                        <span>Powered by</span>
+                        <a href="https://gantasolutions.com" target="_blank">
+                            <img src="https://gantasolutions.com/gantasolutions.png" alt="Ganta Solutions">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <a href="https://wa.me/919493924742" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Status configuration
+        const statusOrder = [
+            "Shipment Created",
+            "Shipped from India", 
+            "In Transit",
+            "Reached Destination Country",
+            "In Local Facility",
+            "Out for Delivery",
+            "Delivered"
+        ];
+
+        const statusIcons = {
+            "Shipment Created": "fas fa-box",
+            "Shipped from India": "fas fa-ship",
+            "In Transit": "fas fa-plane",
+            "Reached Destination Country": "fas fa-flag-checkered",
+            "In Local Facility": "fas fa-warehouse",
+            "Out for Delivery": "fas fa-truck",
+            "Delivered": "fas fa-check-circle"
+        };
+
+        // DOM Elements
+        const navbar = document.getElementById('navbar');
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const backToTop = document.getElementById('backToTop');
+        const trackingForm = document.getElementById('trackingForm');
+        const weightCalculator = document.getElementById('weightCalculator');
+        const contactForm = document.getElementById('contactForm');
+
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile navigation toggle
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navbar.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                    backToTop.classList.add('show');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Back to top functionality
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Initialize animations
+            initializeAnimations();
+            
+            // Initialize counters
+            initializeCounters();
+            
+            // Initialize tabs
+            initializeTabs();
+            
+            // Check for URL tracking parameter
+            checkUrlTrackingRef();
+        });
+
+        // Animation functionality
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.about-card, .service-card, .contact-card, .value-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(el);
+            });
+        }
+
+        // Counter animation
+        function initializeCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            const countUp = (counter, target) => {
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current) + (target === 98 ? '%' : target === 50 ? '+' : '+');
+                }, 20);
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.dataset.target);
+                        countUp(entry.target, target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // Tab functionality
+        function initializeTabs() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetTab = this.dataset.tab;
+                    
+                    // Remove active class from all buttons and panes
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding pane
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        }
+
+        // Tracking functionality
+        if (trackingForm) {
+            trackingForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const trackingNumber = document.getElementById('trackingNumber').value.trim().toUpperCase();
+                
+                if (!trackingNumber.startsWith('SIC') || trackingNumber.length !== 11) {
+                    showError('Please enter a valid tracking number starting with SIC followed by 8 digits (e.g., SIC00000001).');
+                    return;
+                }
+                
+                try {
+                    showLoading();
+                    // Simulate API call with timeout
+                    setTimeout(() => {
+                        // Mock data for demonstration
+                        const mockShipment = {
+                            trackingNumber: trackingNumber,
+                            status: "In Transit",
+                            customerName: "John Doe",
+                            origin: "Guntur, India",
+                            destination: "New York, USA",
+                            weight: "2.5",
+                            history: [
+                                { status: "Shipment Created", notes: "Package received at facility", timestamp: new Date(Date.now() - 86400000 * 3) },
+                                { status: "Shipped from India", notes: "Departed from Mumbai airport", timestamp: new Date(Date.now() - 86400000 * 2) },
+                                { status: "In Transit", notes: "In flight to destination", timestamp: new Date(Date.now() - 86400000 * 1) }
+                            ]
+                        };
+                        
+                        displayShipmentDetails(mockShipment);
+                    }, 1500);
+                } catch (err) {
+                    console.error("Tracking error:", err);
+                    showError('An error occurred while fetching shipment details. Please try again later.');
+                }
+            });
+        }
+
+        // Tracking helper functions
+        function showLoading() {
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('trackingResult').style.display = 'none';
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingSpinner').style.display = 'none';
+        }
+
+        function showError(message) {
+            document.getElementById('errorText').textContent = message;
+            document.getElementById('errorMessage').style.display = 'flex';
+            document.getElementById('trackingResult').style.display = 'none';
+            hideLoading();
+        }
+
+        function displayShipmentDetails(shipment = {}) {
+            // Update shipment info
+            document.getElementById('resultStatus').textContent = shipment.status || 'Shipment Created';
+            document.getElementById('resultCustomerName').textContent = shipment.customerName || '-';
+            document.getElementById('resultTrackingNumber').textContent = shipment.trackingNumber || '-';
+            document.getElementById('resultOrigin').textContent = shipment.origin || '-';
+            document.getElementById('resultDestination').textContent = shipment.destination || '-';
+            document.getElementById('resultWeight').textContent = shipment.weight ? `${shipment.weight} kg` : '-';
+
+            // Create timeline
+            createTimeline(shipment);
+            
+            // Show result
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('trackingResult').style.display = 'block';
+            hideLoading();
+            
+            // Scroll to result
+            document.getElementById('trackingResult').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+
+        function createTimeline(shipment) {
+            const timelineSteps = document.getElementById('timelineSteps');
+            const currentStatus = shipment.status || 'Shipment Created';
+            const currentStatusIndex = statusOrder.indexOf(currentStatus);
+            
+            timelineSteps.innerHTML = '';
+            
+            statusOrder.forEach((status, index) => {
+                const stepElement = document.createElement('div');
+                stepElement.className = 'timeline-step';
+                
+                if (index < currentStatusIndex) {
+                    stepElement.classList.add('completed');
+                } else if (index === currentStatusIndex) {
+                    stepElement.classList.add('active');
+                }
+                
+                const historyItem = shipment.history?.find(item => item.status === status);
+                
+                stepElement.innerHTML = `
+                    <div class="timeline-step-icon">
+                        <i class="${statusIcons[status] || 'fas fa-circle'}"></i>
+                    </div>
+                    <div class="timeline-step-content">
+                        <h4>${status}</h4>
+                        <p>${historyItem?.notes || (index <= currentStatusIndex ? 'Completed' : 'Pending')}</p>
+                        ${historyItem?.timestamp ? `<div class="timeline-date">
+                            <i class="far fa-clock"></i>
+                            ${formatDate(historyItem.timestamp)}
+                        </div>` : ''}
+                    </div>
+                `;
+                
+                timelineSteps.appendChild(stepElement);
+            });
+        }
+
+        function formatDate(timestamp) {
+            try {
+                const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+                return date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            } catch (e) {
+                return 'Date unavailable';
+            }
+        }
+
+        // Auto-tracking from URL parameter
+        function checkUrlTrackingRef() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const trackingRef = urlParams.get('ref');
+            
+            if (trackingRef) {
+                document.getElementById('trackingNumber').value = trackingRef.toUpperCase();
+                // Auto-submit the form
+                if (trackingForm) {
+                    trackingForm.dispatchEvent(new Event('submit'));
+                }
+            }
+        }
+
+        // Weight calculator functionality
+        if (weightCalculator) {
+            weightCalculator.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const length = parseFloat(document.getElementById('length').value);
+                const width = parseFloat(document.getElementById('width').value);
+                const height = parseFloat(document.getElementById('height').value);
+                
+                if (length > 0 && width > 0 && height > 0) {
+                    const dimensionalWeight = (length * width * height) / 5000;
+                    document.getElementById('resultValue').textContent = `${dimensionalWeight.toFixed(2)} kg`;
+                    
+                    const resultCard = document.getElementById('resultCard');
+                    resultCard.classList.add('show');
+                    resultCard.style.display = 'flex';
+                    
+                    // Scroll to result
+                    resultCard.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest' 
+                    });
+                }
+            });
+        }
+
+        // Contact form functionality
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Here you would typically send the data to a server
+                // For now, we'll just show a success message
+                showSuccessMessage('Thank you for your message! We will get back to you soon.');
+                
+                // Reset form
+                this.reset();
+            });
+        }
+
+        function showSuccessMessage(message) {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--success-color);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 0.5rem;
+                box-shadow: var(--shadow-lg);
+                z-index: 1001;
+                animation: slideInRight 0.5s ease-out;
+            `;
+            successDiv.innerHTML = `
+                <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                ${message}
+            `;
+            
+            document.body.appendChild(successDiv);
+            
+            // Add CSS animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                successDiv.style.animation = 'slideInRight 0.5s ease-out reverse';
+                setTimeout(() => {
+                    document.body.removeChild(successDiv);
+                    document.head.removeChild(style);
+                }, 500);
+            }, 5000);
+        }
+
+        // Intersection Observer for scroll animations
+        const observeElements = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe all elements that should animate on scroll
+            document.querySelectorAll('.service-card, .about-card, .contact-card, .value-item').forEach(el => {
+                observer.observe(el);
+            });
+        };
+
+        // Initialize scroll animations
+        document.addEventListener('DOMContentLoaded', observeElements);
+
+        // Add CSS for scroll animations
+        const animationStyles = `
+            .service-card,
+            .about-card,
+            .contact-card,
+            .value-item {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            
+            .service-card.animate,
+            .about-card.animate,
+            .contact-card.animate,
+            .value-item.animate {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+
+        // Add the styles to the page
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = animationStyles;
+        document.head.appendChild(styleSheet);
+
+        // Lazy loading for images
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+
+        // Service Worker registration for PWA capabilities
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
