@@ -1,0 +1,2205 @@
+[⚠️ Suspicious Content] <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRESHTA International Couriers - Fast & Reliable Logistics Solutions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚚</text></svg>" type="image/svg+xml">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
+    
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #6c757d;
+            --accent-color: #ff6b00;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #003366);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text span {
+            color: var(--accent-color);
+        }
+        
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        nav ul li a.active {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        /* Hero Section with Animated Background */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #001a33);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .flight-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .flight {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.3);
+            animation: fly 15s linear infinite;
+        }
+        
+        .flight:nth-child(1) { top: 20%; animation-delay: 0s; }
+        .flight:nth-child(2) { top: 40%; animation-delay: 5s; }
+        .flight:nth-child(3) { top: 60%; animation-delay: 10s; }
+        .flight:nth-child(4) { top: 80%; animation-delay: 7s; }
+        
+        @keyframes fly {
+            0% {
+                left: -100px;
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(5deg);
+            }
+            50% {
+                transform: rotate(-5deg);
+            }
+            75% {
+                transform: rotate(3deg);
+            }
+            100% {
+                left: calc(100% + 100px);
+                transform: rotate(0deg);
+            }
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            animation: fadeIn 1.5s ease;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e05d00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Scrolling Sections */
+        .scrolling-section {
+            padding: 2rem 0;
+            background: white;
+            overflow: hidden;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .scrolling-container {
+            display: flex;
+            align-items: center;
+            animation: scroll-left 30s linear infinite;
+        }
+        
+        .scrolling-container.reverse {
+            animation: scroll-right 25s linear infinite;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        @keyframes scroll-right {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .scroll-item {
+            display: flex;
+            align-items: center;
+            margin-right: 3rem;
+            flex-shrink: 0;
+        }
+        
+        .country-flag {
+            width: 40px;
+            height: 30px;
+            margin-right: 0.5rem;
+            border-radius: 4px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .courier-logo {
+            height: 40px;
+            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            width: 40px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .scroll-text {
+            font-weight: 600;
+            color: var(--dark-color);
+            white-space: nowrap;
+        }
+        
+        /* Tracking Section */
+        .tracking-section {
+            background-color: white;
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .tracking-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tracking-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+            outline: none;
+        }
+        
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-color);
+        }
+        
+        .tracking-result {
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .package-info {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .info-item {
+            margin-bottom: 1rem;
+        }
+        
+        .label {
+            font-weight: 600;
+            color: var(--dark-color);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        
+        .value {
+            color: var(--secondary-color);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .status-created {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .status-shipped {
+            background-color: #fff8e1;
+            color: #ff8f00;
+        }
+        
+        .status-transit {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .status-arrived {
+            background-color: #e0f7fa;
+            color: #00acc1;
+        }
+        
+        .status-delivery {
+            background-color: #f3e5f5;
+            color: #8e24aa;
+        }
+        
+        .status-delivered {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e0e0e0;
+        }
+        
+        .timeline-step {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .timeline-step.completed::before {
+            background-color: var(--success-color);
+        }
+        
+        .timeline-step.active::before {
+            background-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.2);
+        }
+        
+        .timeline-step h4 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-step h4 i {
+            margin-right: 0.5rem;
+        }
+        
+        .timeline-step p {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-date i {
+            margin-right: 0.3rem;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .service-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-content h2 i {
+            margin-right: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .service-content p {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .service-content ul {
+            list-style: none;
+        }
+        
+        .service-content ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .service-content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .feature-card:hover i,
+        .feature-card:hover h3,
+        .feature-card:hover p {
+            color: white;
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card p {
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        /* Calculator Section */
+        .calculator-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .calculator-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+        }
+        
+        .result-card {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .result-card h5 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .result-card h5 i {
+            margin-right: 0.8rem;
+        }
+        
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card p {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-form {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .footer-section p {
+            color: #aaa;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-section ul li a i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+            width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-bottom p {
+            color: #aaa;
+            margin-bottom: 0;
+        }
+        
+        .footer-bottom a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Floating Buttons */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            color: white;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Loading Styles */
+        .loading-spinner {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+        
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border: 0.3em solid transparent;
+            border-top: 0.3em solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: none;
+            align-items: center;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translate3d(0, -100%, 0);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+            }
+            
+            nav ul li a {
+                color: var(--dark-color);
+                font-size: 1.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                bottom: 80px;
+                right: 20px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <div class="logo-text">SRESHTA <span>Couriers</span></div>
+            </div>
+            
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#tracking">Tracking</a></li>
+                    <li><a href="#calculator">Calculator</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="flight-animation">
+                <div class="flight">✈️</div>
+                <div class="flight">🛩️</div>
+                <div class="flight">✈️</div>
+                <div class="flight">🚁</div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1>Fast & Reliable Courier Services Worldwide</h1>
+            <p>Delivering your packages with care and precision across India and internationally since 2015.</p>
+            <div class="hero-buttons">
+                <a href="#tracking" class="btn btn-primary">Track Shipment</a>
+                <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countries Scrolling Section -->
+<section class="scrolling-section">
+    <div class="scrolling-container">
+        <div class="scroll-item">
+            <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="United States" class="country-flag">
+            <div class="scroll-text">United States</div>
+        </div>
+        <div class="scroll-item">
+            <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="United Kingdom" class="country-flag">
+            <div class="scroll-text">United Kingdom</div>
+        </div>
+        <div class="scroll-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg" alt="Canada" class="country-flag">
+            <div class="scroll-text">Canada</div>
+        </div>
+        <div class="scroll-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg" alt="Australia" class="country-flag">
+            <div class="scroll-text">Australia</div>
+        </div>
+        <div class="scroll-item">
+            <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Germany" class="country-flag">
+            <div class="scroll-text">Germany</div>
+        </div>
+        <div class="scroll-item">
+            <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France" class="country-flag">
+            <div class="scroll-text">France</div>
+        </div>
+        <div class="scroll-item">
+            <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" alt="Japan" class="country-flag">
+            <div class="scroll-text">Japan</div>
+        </div>
+        <div class="scroll-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Singapore.svg" alt="Singapore" class="country-flag">
+            <div class="scroll-text">Singapore</div>
+        </div>
+        <div class="scroll-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg" alt="UAE" class="country-flag">
+            <div class="scroll-text">UAE</div>
+        </div>
+        <div class="scroll-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Netherlands" class="country-flag">
+            <div class="scroll-text">Netherlands</div>
+        </div>
+    </div>
+</section>
+
+<!-- Courier Platforms Scrolling Section -->
+<section class="scrolling-section">
+    <div class="scrolling-container reverse">
+        <div class="scroll-item">
+            <img src="img/fedex.png" alt="FedEx" class="courier-logo">
+            <div class="scroll-text">FedEx</div>
+        </div>
+        <div class="scroll-item">
+            <img src="img/dhl.png" alt="DHL" class="courier-logo">
+            <div class="scroll-text">DHL</div>
+        </div>
+        <div class="scroll-item">
+            <img src="img/ups.png" alt="UPS" class="courier-logo">
+            <div class="scroll-text">UPS</div>
+        </div>
+        <div class="scroll-item">
+            <img src="img/blue-dart.png" alt="Blue Dart" class="courier-logo">
+            <div class="scroll-text">Blue Dart</div>
+        </div>
+        <div class="scroll-item">
+            <img src="img/dtdc.png" alt="DTDC" class="courier-logo">
+            <div class="scroll-text">DTDC</div>
+        </div>
+        <div class="scroll-item">
+            <img src="img/india-post.png" alt="India Post" class="courier-logo">
+            <div class="scroll-text">India Post</div>
+        </div>
+        <div class="scroll-item">
+            <img src="img/express.png" alt="Express" class="courier-logo">
+            <div class="scroll-text">Express</div>
+        </div>
+        <div class="scroll-item">
+            <img src="img/international.png" alt="International" class="courier-logo">
+            <div class="scroll-text">International</div>
+        </div>
+    </div>
+</section>>
+
+    <!-- Tracking Section -->
+    <section class="tracking-section" id="tracking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Track Your Shipment</h2>
+                <p>Enter your tracking number to get real-time updates on your package's journey</p>
+            </div>
+            
+            <div class="tracking-container">
+                <form id="trackingForm" class="tracking-form">
+                    <div class="form-group">
+                        <label for="trackingNumber">Tracking Number</label>
+                        <input type="text" class="form-control" id="trackingNumber" placeholder="SIC00000001" required>
+                        <i class="fas fa-barcode input-icon"></i>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Track Package
+                    </button>
+                </form>
+                
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner-border"></div>
+                    <p>Fetching shipment details...</p>
+                </div>
+                
+                <div class="alert alert-danger" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorText"></span>
+                </div>
+                
+                <div class="tracking-result" id="trackingResult">
+                    <div class="package-info">
+                        <h3><i class="fas fa-box-open"></i> Shipment Details</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Status:</span>
+                                <span id="resultStatus" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Customer Name:</span>
+                                <span id="resultCustomerName" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Tracking Number:</span>
+                                <span id="resultTrackingNumber" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Origin:</span>
+                                <span id="resultOrigin" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Destination:</span>
+                                <span id="resultDestination" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Weight:</span>
+                                <span id="resultWeight" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Forwarding AWB:</span>
+                                <span id="resultForwardingAWB" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Last Updated:</span>
+                                <span id="resultUpdated" class="value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <h3><i class="fas fa-map-marked-alt"></i> Shipment Progress</h3>
+                        <div class="timeline-steps" id="timelineSteps"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive logistics solutions tailored to meet your shipping needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="service-content">
+                        <span class="service-tag">Domestic</span>
+                        <h2><i class="fas fa-truck"></i> Domestic Courier</h2>
+                        <p>Fast and reliable delivery services across India with real-time tracking and multiple delivery options.</p>
+                        <ul>
+                            <li>Same-day and next-day delivery options</li>
+                            <li>Express and economy services</li>
+                            <li>Cash on delivery available</li>
+                            <li>Secure handling of sensitive documents</li>
+                            <li>Dedicated account management</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="service-content">
+                        <span class="service-tag">International</span>
+                        <h2><i class="fas fa-globe"></i> International Shipping</h2>
+                        <p>Seamless cross-border logistics solutions with customs clearance and end-to-end tracking.</p>
+                        <ul>
+                            <li>Air and sea freight options</li>
+                            <li>Door-to-door international delivery</li>
+                            <li>Customs documentation assistance</li>
+                            <li>Competitive international rates</li>
+                            <li>Dedicated international support</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="service-content">
+                        <span class="service-tag">E-commerce</span>
+                        <h2><i class="fas fa-shopping-cart"></i> E-commerce Solutions</h2>
+                        <p>Customized logistics solutions for online sellers with integrated order management.</p>
+                        <ul>
+                            <li>Bulk shipping discounts</li>
+                            <li>Automated order processing</li>
+                            <li>Returns management</li>
+                            <li>Inventory storage options</li>
+                            <li>API integration available</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <i class="fas fa-pallet"></i>
+                    </div>
+                    <div class="service-content">
+                        <span class="service-tag">Commercial</span>
+                        <h2><i class="fas fa-pallet"></i> Cargo & Freight</h2>
+                        <p>Comprehensive cargo solutions for businesses of all sizes with flexible options.</p>
+                        <ul>
+                            <li>Full truckload (FTL) and less-than-truckload (LTL)</li>
+                            <li>Heavy and oversized cargo handling</li>
+                            <li>Temperature-controlled transport</li>
+                            <li>Warehousing and distribution</li>
+                            <li>Dedicated fleet services</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="service-content">
+                        <span class="service-tag">Priority</span>
+                        <h2><i class="fas fa-envelope"></i> Document Courier</h2>
+                        <p>Secure and timely delivery of important documents with proof of delivery.</p>
+                        <ul>
+                            <li>Confidential document handling</li>
+                            <li>Same-day document delivery</li>
+                            <li>Legal and court document services</li>
+                            <li>Notarized delivery options</li>
+                            <li>24/7 document tracking</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="service-content">
+                        <span class="service-tag">Specialized</span>
+                        <h2><i class="fas fa-star"></i> Special Services</h2>
+                        <p>Custom solutions for unique shipping requirements with personalized care.</p>
+                        <ul>
+                            <li>Medical equipment and supplies</li>
+                            <li>Art and fragile items transport</li>
+                            <li>Event and exhibition logistics</li>
+                            <li>High-value item insurance</li>
+                            <li>White-glove delivery services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>We go the extra mile to ensure your shipments arrive safely and on time</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Handling</h3>
+                    <p>Your shipments are handled with utmost care and security throughout the journey.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>On-Time Delivery</h3>
+                    <p>98% on-time delivery rate with real-time tracking and updates.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-rupee-sign"></i>
+                    <h3>Competitive Pricing</h3>
+                    <p>Affordable rates without compromising on service quality.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated customer support available round the clock.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Wide Coverage</h3>
+                    <p>Extensive network covering 500+ cities across India and internationally.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Processing</h3>
+                    <p>Quick pickup and processing with same-day dispatch options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dimensional Weight Calculator</h2>
+                <p>Calculate the volumetric weight of your package for accurate shipping costs</p>
+            </div>
+            
+            <div class="calculator-card">
+                <form id="weightCalculator">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="length">Length (cm)</label>
+                            <input type="number" class="form-control" id="length" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="width">Width (cm)</label>
+                            <input type="number" class="form-control" id="width" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="height">Height (cm)</label>
+                            <input type="number" class="form-control" id="height" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-calculator"></i> Calculate
+                    </button>
+                </form>
+            </div>
+            
+            <div class="result-card" id="resultCard">
+                <h5><i class="fas fa-weight"></i> Dimensional Weight Result</h5>
+                <div style="display: flex; align-items: center; margin-top: 1rem;">
+                    <div class="icon-box">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div>
+                        <h3 id="resultValue" style="margin: 0;">0 kg</h3>
+                        <p style="margin: 0; opacity: 0.8;">Formula: (Length × Width × Height) / 5000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About SRESHTA International Couriers</h2>
+                <p>Delivering excellence in logistics since 2015</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-history"></i>
+                    <h3>Our History</h3>
+                    <p>Founded in 2015 in Guntur, Andhra Pradesh, SRESHTA International Couriers began as a small local delivery service. Through dedication and customer-focused service, we've grown into a trusted logistics partner serving clients across India and internationally.</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>To be the most trusted and preferred logistics partner for businesses and individuals, recognized for our reliability, speed, and exceptional customer service.</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To deliver packages with the highest level of care, efficiency, and reliability while maintaining competitive pricing and personalized service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for any inquiries or support</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with our customer service representatives</p>
+                    <a href="tel:+919493924742" class="btn btn-primary">+91 94939 24742</a>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>Send us your questions and we'll respond promptly</p>
+                    <a href="mailto:srasthainternationalcouriers@gmail.com" class="btn btn-primary">Send Email</a>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>Chat with us on WhatsApp for quick assistance</p>
+                    <a href="https://wa.me/919493924742" class="btn btn-primary" target="_blank">Start Chat</a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3><i class="fas fa-paper-plane"></i> Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" class="form-control" id="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-shipping-fast"></i> SRESHTA International Couriers</h3>
+                <p>Your trusted partner for fast and reliable logistics solutions across India and internationally.</p>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-link"></i> Quick Links</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#tracking"><i class="fas fa-chevron-right"></i> Tracking</a></li>
+                    <li><a href="#calculator"><i class="fas fa-chevron-right"></i> Calculator</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Contact Info</h3>
+                <ul>
+                    <li><a href="https://maps.google.com?q=7/4,+Sali+Pet,+Arundelpet,+Guntur,+Andhra+Pradesh+522002" target="_blank"><i class="fas fa-location-dot"></i> 7/4, Sali Pet, Arundelpet, Guntur, Andhra Pradesh 522002</a></li>
+                    <li><a href="tel:+919493924742"><i class="fas fa-phone"></i> +91 94939 24742</a></li>
+                    <li><a href="mailto:srasthainternationalcouriers@gmail.com"><i class="fas fa-envelope"></i> srasthainternationalcouriers@gmail.com</a></li>
+                    <li><a href="https://wa.me/919493924742" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                <ul>
+                    <li><i class="fas fa-calendar-day"></i> Monday - Friday: 9:00 AM - 7:00 PM</li>
+                    <li><i class="fas fa-calendar-day"></i> Saturday: 9:00 AM - 2:00 PM</li>
+                    <li><i class="fas fa-calendar-day"></i> Sunday: Closed</li>
+                    <li><i class="fas fa-truck-fast"></i> 24/7 Online Tracking Available</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; <span id="currentYear"></span> SRESHTA International Couriers. All rights reserved.</p>
+                <div>
+                    <span>Powered by</span>
+                    <a href="https://gantasolutions.com" target="_blank">Ganta Solutions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919493924742" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAIMQbZZjIb-Z_sNJ4_7XhNz0DtiNnSSfg",
+            authDomain: "shipment-bec8d.firebaseapp.com",
+            projectId: "shipment-bec8d",
+            storageBucket: "shipment-bec8d.appspot.com",
+            messagingSenderId: "83538524138",
+            appId: "1:83538524138:web:c06cf1b00915ea1f606493",
+            measurementId: "G-XHDE3ZMCEY"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        // Status configuration
+        const statusOrder = [
+            "Shipment Created",
+            "Shipped from India",
+            "In Transit",
+            "Reached Destination Country",
+            "In Local Facility",
+            "Out for Delivery",
+            "Delivered"
+        ];
+        
+        const statusIcons = {
+            "Shipment Created": "fas fa-box",
+            "Shipped from India": "fas fa-ship",
+            "In Transit": "fas fa-plane",
+            "Reached Destination Country": "fas fa-flag-checkered",
+            "In Local Facility": "fas fa-warehouse",
+            "Out for Delivery": "fas fa-truck",
+            "Delivered": "fas fa-check-circle"
+        };
+        
+        const statusBadges = {
+            "Shipment Created": "status-created",
+            "Shipped from India": "status-shipped",
+            "In Transit": "status-transit",
+            "Reached Destination Country": "status-arrived",
+            "In Local Facility": "status-arrived",
+            "Out for Delivery": "status-delivery",
+            "Delivered": "status-delivered"
+        };
+        
+        // Courier configuration
+        const courierConfig = [
+            {
+                name: 'FedEx',
+                pattern: /^(\d{12}|\d{15})$/,
+                url: 'https://www.fedex.com/fedextrack/?trknbr='
+            },
+            {
+                name: 'DHL',
+                pattern: /^(\d{10}|\d{11})$/,
+                url: 'https://www.dhl.com/in-en/home/tracking/tracking-express.html?submit=1&tracking-id='
+            },
+            {
+                name: 'UPS',
+                pattern: /^(1Z[0-9A-Z]{16}|T[0-9]{10}|[0-9]{9})$/,
+                url: 'https://www.ups.com/track?loc=en_IN&tracknum='
+            },
+            {
+                name: 'India Post',
+                pattern: /^[A-Z]{2}\d{9}[A-Z]{2}$/,
+                url: 'https://www.indiapost.gov.in/_layouts/15/DOP.Portal.Tracking/TrackConsignment.aspx?LT='
+            },
+            {
+                name: 'Blue Dart',
+                pattern: /^\d{12}$/,
+                url: 'https://www.bluedart.com/tracking'
+            },
+            {
+                name: 'DTDC',
+                pattern: /^DTDC\d{10,12}$/,
+                url: 'https://www.dtdc.in/tracking/tracking_results.asp?Ttype=awb_no&strCnno='
+            }
+        ];
+        
+        // DOM Elements
+        const trackingForm = document.getElementById('trackingForm');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const trackingResult = document.getElementById('trackingResult');
+        const timelineSteps = document.getElementById('timelineSteps');
+        const weightCalculator = document.getElementById('weightCalculator');
+        const resultCard = document.getElementById('resultCard');
+        const resultValue = document.getElementById('resultValue');
+        const contactForm = document.getElementById('contactForm');
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        const backToTop = document.getElementById('backToTop');
+        const currentYear = document.getElementById('currentYear');
+        
+        // Set current year in footer
+        currentYear.textContent = new Date().getFullYear();
+        
+        // Mobile navigation toggle
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            navToggle.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                    navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Helper functions
+        function showLoading() {
+            loadingSpinner.style.display = 'block';
+            errorMessage.style.display = 'none';
+            trackingResult.style.display = 'none';
+        }
+        
+        function hideLoading() {
+            loadingSpinner.style.display = 'none';
+        }
+        
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.style.display = 'flex';
+            trackingResult.style.display = 'none';
+        }
+        
+        function formatDate(date) {
+            if (!date) return '-';
+            try {
+                const options = {
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric',
+                    hour: '2-digit', 
+                    minute: '2-digit'
+                };
+                return date.toLocaleDateString('en-US', options);
+            } catch (e) {
+                console.error("Date formatting error:", e);
+                return '-';
+            }
+        }
+        
+        function detectCourier(awbNumber) {
+            if (!awbNumber) return null;
+            const cleanAwb = awbNumber.replace(/[ -]/g, '');
+            return courierConfig.find(courier => courier.pattern.test(cleanAwb)) || null;
+        }
+        
+        function redirectToCourierTracking(awbNumber) {
+            const courier = detectCourier(awbNumber);
+            if (courier) {
+                window.open(courier.url + encodeURIComponent(awbNumber), '_blank');
+            } else {
+                window.open(`https://www.ship24.com/search?q=${encodeURIComponent(awbNumber)}`, '_blank');
+            }
+        }
+        
+        function createTimelineStep(status, isCompleted, isActive, historyItem) {
+            const step = document.createElement('div');
+            step.className = `timeline-step ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}`;
+            
+            // Status title with icon
+            const statusTitle = document.createElement('h4');
+            const statusIcon = document.createElement('i');
+            statusIcon.className = statusIcons[status] || 'fas fa-circle';
+            statusTitle.appendChild(statusIcon);
+            statusTitle.appendChild(document.createTextNode(' ' + status));
+            step.appendChild(statusTitle);
+            
+            // Status description
+            const statusDesc = document.createElement('p');
+            
+            if (isCompleted && historyItem) {
+                statusDesc.textContent = historyItem.notes || 'Status updated';
+                
+                if (historyItem.timestamp) {
+                    try {
+                        const timestamp = historyItem.timestamp.toDate 
+                            ? historyItem.timestamp.toDate() 
+                            : new Date(historyItem.timestamp);
+                        const dateElem = document.createElement('span');
+                        dateElem.className = 'timeline-date';
+                        dateElem.innerHTML = `<i class="far fa-clock"></i> ${formatDate(timestamp)}`;
+                        step.appendChild(dateElem);
+                    } catch (e) {
+                        console.error("Error processing timestamp:", e);
+                    }
+                }
+            } else if (isActive) {
+                statusDesc.textContent = 'Current status';
+            } else {
+                statusDesc.textContent = 'Pending';
+            }
+            
+            step.appendChild(statusDesc);
+            return step;
+        }
+        
+        function displayShipmentDetails(shipment = {}) {
+            // Basic shipment info
+            document.getElementById('resultCustomerName').textContent = shipment.customerName || '-';
+            document.getElementById('resultTrackingNumber').textContent = shipment.trackingNumber || '-';
+            
+            // Status with badge
+            const status = shipment.status || 'Shipment Created';
+            const badgeClass = statusBadges[status] || 'status-created';
+            document.getElementById('resultStatus').className = 'value';
+            document.getElementById('resultStatus').innerHTML = `${status} <span class="status-badge ${badgeClass}">${status}</span>`;
+            
+            // Other details
+            document.getElementById('resultOrigin').textContent = shipment.origin || '-';
+            document.getElementById('resultDestination').textContent = shipment.destination || '-';
+            document.getElementById('resultWeight').textContent = shipment.weight ? `${shipment.weight} kg` : '-';
+            
+            // Last updated time
+            let updatedAt = shipment.updatedAt || shipment.history?.[shipment.history.length - 1]?.timestamp;
+            let updatedAtText = '-';
+            if (updatedAt) {
+                try {
+                    updatedAtText = formatDate(updatedAt.toDate ? updatedAt.toDate() : new Date(updatedAt));
+                } catch (e) {
+                    console.error("Error formatting update date:", e);
+                }
+            }
+            document.getElementById('resultUpdated').textContent = updatedAtText;
+            
+            // Forwarding AWB
+            const forwardingAWBElement = document.getElementById('resultForwardingAWB');
+            if (shipment.awbNumber) {
+                const awbNumber = shipment.awbNumber;
+                const courier = detectCourier(awbNumber) || shipment.forwardingCourier;
+                const displayText = courier 
+                    ? `${typeof courier === 'string' ? courier : courier.name}: ${awbNumber}`
+                    : `AWB: ${awbNumber}`;
+                
+                forwardingAWBElement.innerHTML = `
+                    <a href="#" 
+                       onclick="redirectToCourierTracking('${awbNumber.replace(/'/g, "\\'")}'); return false;"
+                       style="color: #0066cc; text-decoration: underline; cursor: pointer;"
+                       title="${courier ? `Track on ${typeof courier === 'string' ? courier : courier.name}` : 'Track this AWB'}">
+                       ${displayText} <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i>
+                    </a>`;
+            } else {
+                forwardingAWBElement.textContent = 'Not assigned';
+            }
+            
+            // Timeline display
+            timelineSteps.innerHTML = '';
+            
+            let currentStatusIndex = statusOrder.indexOf(status);
+            if (currentStatusIndex === -1) {
+                console.warn("Status not found in statusOrder:", status);
+                currentStatusIndex = 0;
+            }
+            
+            const history = Array.isArray(shipment.history) ? shipment.history : [];
+            
+            statusOrder.forEach((status, idx) => {
+                const isCompleted = idx < currentStatusIndex;
+                const isActive = idx === currentStatusIndex;
+                const historyItem = history.find(item => item && item.status === status);
+                
+                timelineSteps.appendChild(
+                    createTimelineStep(status, isCompleted, isActive, historyItem)
+                );
+            });
+            
+            // Animate timeline steps
+            setTimeout(() => {
+                const steps = document.querySelectorAll('.timeline-step');
+                steps.forEach((step, index) => {
+                    setTimeout(() => {
+                        step.classList.add('animate');
+                    }, index * 200);
+                });
+            }, 100);
+            
+            errorMessage.style.display = 'none';
+            trackingResult.style.display = 'block';
+        }
+        
+        // Form submit handler
+        trackingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const trackingNumber = document.getElementById('trackingNumber').value.trim().toUpperCase();
+            
+            // Validation
+            if (!trackingNumber.startsWith('SIC') || trackingNumber.length !== 11) {
+                showError('Please enter a valid tracking number starting with SIC followed by 8 digits (e.g., SIC00000001).');
+                return;
+            }
+            
+            try {
+                showLoading();
+                const docRef = db.collection('shipments').doc(trackingNumber);
+                const docSnap = await docRef.get();
+                
+                if (docSnap.exists) {
+                    displayShipmentDetails(docSnap.data());
+                } else {
+                    showError('No shipment found with this tracking number. Please check and try again.');
+                }
+            } catch (err) {
+                console.error("Tracking error:", err);
+                showError('An error occurred while fetching shipment details. Please try again later.');
+            } finally {
+                hideLoading();
+            }
+        });
+        
+        // Weight calculator form handler
+        weightCalculator.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const height = parseFloat(document.getElementById('height').value);
+            
+            if (isNaN(length) || isNaN(width) || isNaN(height)) {
+                alert('Please enter valid dimensions');
+                return;
+            }
+            
+            const dimensionalWeight = (length * width * height) / 5000;
+            resultValue.textContent = dimensionalWeight.toFixed(2) + ' kg';
+            resultCard.style.display = 'block';
+        });
+        
+        // Contact form handler
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Here you would typically send the form data to your server
+            // For demo purposes, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been received. We'll contact you soon at ${email}.`);
+            contactForm.reset();
+        });
+        
+        // Auto-tracking from URL parameter
+        function checkUrlTrackingRef() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const trackingRef = urlParams.get('ref');
+            
+            if (trackingRef) {
+                document.getElementById('trackingNumber').value = trackingRef.toUpperCase();
+                autoTrackPackage(trackingRef);
+            }
+        }
+        
+        async function autoTrackPackage(trackingNumber) {
+            try {
+                trackingNumber = trackingNumber.trim().toUpperCase();
+                
+                if (!trackingNumber.startsWith('SIC') || trackingNumber.length !== 11) {
+                    showError('Invalid tracking number format');
+                    return;
+                }
+                
+                showLoading();
+                const docRef = db.collection('shipments').doc(trackingNumber);
+                const docSnap = await docRef.get();
+                
+                if (docSnap.exists) {
+                    displayShipmentDetails(docSnap.data());
+                } else {
+                    showError('No shipment found with this tracking number');
+                }
+            } catch (error) {
+                console.error("Auto-track error:", error);
+                showError('An error occurred while fetching shipment details');
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        // Initialize the page
+        checkUrlTrackingRef();
+        window.redirectToCourierTracking = redirectToCourierTracking;
+        
+        // Add animation to elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card, .feature-card, .contact-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on page load
+    </script>
+</body>
+</html>
